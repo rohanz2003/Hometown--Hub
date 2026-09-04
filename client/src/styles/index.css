@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens from design.md § 2, as "R G B" triplets so Tailwind can apply
+ * opacity modifiers (e.g. `bg-primary/10`). Switching `.dark` on <html> retints
+ * the whole app.
+ */
+@layer base {
+  :root {
+    --color-primary: 47 111 237; /* #2F6FED — trust, connection */
+    --color-primary-hover: 35 92 208;
+    --color-primary-soft: 232 239 254;
+    --color-secondary: 63 163 77; /* #3FA34D — community, locality */
+    --color-secondary-soft: 232 246 234;
+    --color-accent: 242 153 74; /* #F2994A — events, highlights */
+    --color-accent-soft: 253 242 232;
+
+    --color-background: 250 250 250; /* #FAFAFA */
+    --color-surface: 255 255 255; /* #FFFFFF */
+    --color-surface-muted: 245 246 248;
+    --color-text: 31 31 31; /* #1F1F1F */
+    --color-text-muted: 90 95 104;
+    --color-text-subtle: 130 136 146;
+    --color-border: 227 229 234;
+
+    --color-success: 39 174 96; /* #27AE60 */
+    --color-success-soft: 230 247 237;
+    --color-warning: 242 201 76; /* #F2C94C */
+    --color-warning-soft: 254 248 230;
+    --color-error: 235 87 87; /* #EB5757 */
+    --color-error-soft: 253 235 235;
+
+    /*
+     * Chart series. Blue + orange rather than the brand blue + green: the
+     * blue/green pair scores ΔE 7 under tritanopia, blue/orange scores 29.7.
+     * Both steps validated for the light surface (lightness band, chroma floor,
+     * CVD separation, contrast).
+     */
+    --color-chart-1: 47 111 237; /* posts   #2F6FED */
+    --color-chart-2: 242 153 74; /* events  #F2994A */
+    --color-chart-grid: 227 229 234;
+  }
+
+  .dark {
+    --color-primary: 122 162 249;
+    --color-primary-hover: 149 181 250;
+    --color-primary-soft: 30 41 66;
+    --color-secondary: 109 202 122;
+    --color-secondary-soft: 26 45 31;
+    --color-accent: 245 176 112;
+    --color-accent-soft: 55 40 26;
+
+    --color-background: 18 18 18; /* #121212 */
+    --color-surface: 30 30 30; /* #1E1E1E */
+    --color-surface-muted: 38 38 40;
+    --color-text: 237 237 237; /* #EDEDED */
+    --color-text-muted: 173 176 182;
+    --color-text-subtle: 132 136 143;
+    --color-border: 55 56 60;
+
+    --color-success: 82 196 129;
+    --color-success-soft: 22 46 33;
+    --color-warning: 245 212 108;
+    --color-warning-soft: 52 45 22;
+    --color-error: 242 122 122;
+    --color-error-soft: 55 27 27;
+
+    /* Re-stepped for the dark surface, not an automatic flip of the light pair. */
+    --color-chart-1: 90 143 240; /* posts   #5A8FF0 */
+    --color-chart-2: 204 127 56; /* events  #CC7F38 */
+    --color-chart-grid: 55 56 60;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-base text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold tracking-[-0.01em] text-ink;
+  }
+
+  /* A single, consistent focus ring — never remove it (design.md § 1). */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-canvas;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Reusable surface for cards and panels. */
+  .hh-card {
+    @apply rounded-card border border-line bg-surface shadow-card;
+  }
+
+  .hh-input {
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-base text-ink
+      placeholder:text-ink-subtle
+      focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30
+      disabled:cursor-not-allowed disabled:bg-surface-muted;
+  }
+
+  .hh-label {
+    @apply mb-1.5 block text-sm font-medium text-ink-muted;
+  }
+
+  /* Skip link for keyboard users; visible only when focused. */
+  .hh-skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50
+      focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white;
+  }
+}
+
+@layer utilities {
+  .hh-scroll-thin {
+    scrollbar-width: thin;
+  }
+}

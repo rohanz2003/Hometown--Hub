@@ -1,0 +1,41 @@
+# render.yaml — Phase 6 deployment blueprint for the Express API.
+#
+# Create the service from this file in Render, then set the secret values marked
+# `sync: false` in the dashboard. Never commit real secrets.
+services:
+  - type: web
+    name: hometown-hub-api
+    runtime: node
+    plan: starter
+    region: oregon
+    rootDir: .
+    buildCommand: npm install --omit=dev --workspace server
+    startCommand: npm run start --workspace server
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      # The deployed frontend origin(s), comma-separated.
+      - key: CLIENT_ORIGINS
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      # MongoDB Atlas connection string.
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_ACCESS_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 30d
+      - key: BCRYPT_ROUNDS
+        value: 12
+      # Email of the account that should hold the platform_admin role.
+      - key: PLATFORM_ADMIN_EMAIL
+        sync: false

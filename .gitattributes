@@ -1,0 +1,15 @@
+# Normalise line endings so Prettier's `endOfLine: lf` check passes on every
+# platform, regardless of each developer's core.autocrlf setting.
+* text=auto eol=lf
+
+# Binary files Git must not touch.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+
+# Keep the lockfile out of diffs and merge noise.
+package-lock.json -diff linguist-generated

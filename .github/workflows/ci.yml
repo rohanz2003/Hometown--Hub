@@ -1,0 +1,51 @@
+# CI — lint, test, and build on every push and pull request (Phase 6).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    services:
+      # The backend integration tests run against a real MongoDB.
+      mongo:
+        image: mongo:8
+        ports: ['27017:27017']
+        options: >-
+          --health-cmd "mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      MONGODB_URI_TEST: mongodb://127.0.0.1:27017/hometown_hub_test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Backend tests
+        run: npm run test:server
+
+      - name: Frontend tests
+        run: npm run test:client
+
+      - name: Production build
+        run: npm run build
