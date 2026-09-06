@@ -78,6 +78,7 @@ const NOTIFICATION_TYPES = {
   MEMBER_REQUEST: 'member_request',
   MEMBER_APPROVED: 'member_approved',
   MEMBER_REJECTED: 'member_rejected',
+  COMMUNITY_SUBMITTED: 'community_submitted',
   COMMUNITY_APPROVED: 'community_approved',
   COMMUNITY_REJECTED: 'community_rejected',
   ANNOUNCEMENT_PINNED: 'announcement_pinned',

@@ -59,7 +59,7 @@ export default function Navbar({ unreadCount = 0 }) {
         >
           <span
             aria-hidden="true"
-            className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-white"
+            className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-ink-inverse"
           >
             HH
           </span>
@@ -69,7 +69,7 @@ export default function Navbar({ unreadCount = 0 }) {
         <form
           role="search"
           onSubmit={handleSearch}
-          className="ml-auto min-w-0 flex-1 sm:ml-4 sm:max-w-md relative"
+          className="min-w-0 flex-1 sm:ml-4 sm:max-w-md relative"
         >
           <label htmlFor="global-search" className="sr-only">
             Search communities
@@ -88,7 +88,7 @@ export default function Navbar({ unreadCount = 0 }) {
           />
         </form>
 
-        <div className="flex items-center gap-1.5 shrink-0 ml-3">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5">
           <button
             type="button"
             onClick={toggleTheme}

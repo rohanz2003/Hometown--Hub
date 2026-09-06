@@ -7,8 +7,9 @@
  */
 const Notification = require('../models/Notification');
 const Membership = require('../models/Membership');
+const User = require('../models/User');
 const logger = require('../utils/logger');
-const { MEMBERSHIP_STATUS } = require('../utils/constants');
+const { MEMBERSHIP_STATUS, PLATFORM_ROLES } = require('../utils/constants');
 
 /**
  * Creates one notification. Self-notifications are skipped (you don't need to be
@@ -81,4 +82,27 @@ async function notifyModerators({ community, actor, type, message, link = '', ..
   }
 }
 
-module.exports = { notify, notifyCommunity, notifyModerators };
+/** Notifies every platform admin about a pending platform-level action. */
+async function notifyPlatformAdmins({ actor, type, message, link = '', ...refs }) {
+  try {
+    const admins = await User.find({
+      role: PLATFORM_ROLES.PLATFORM_ADMIN,
+      isActive: true,
+    })
+      .select('_id')
+      .lean();
+
+    const docs = admins
+      .filter((admin) => String(admin._id) !== String(actor))
+      .map((admin) => ({ recipient: admin._id, actor, type, message, link, ...refs }));
+
+    if (docs.length === 0) return 0;
+    await Notification.insertMany(docs, { ordered: false });
+    return docs.length;
+  } catch (err) {
+    logger.error('Failed to notify platform admins', { type, error: err.message });
+    return 0;
+  }
+}
+
+module.exports = { notify, notifyCommunity, notifyModerators, notifyPlatformAdmins };

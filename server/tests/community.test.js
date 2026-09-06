@@ -37,6 +37,32 @@ describe('POST /api/v1/communities', () => {
     expect(detail.body.data.myRole).toBe('admin');
   });
 
+  it('notifies active platform admins about a pending community', async () => {
+    const admin = await makePlatformAdmin(await registerUser());
+    const owner = await registerUser();
+
+    const created = await api()
+      .post('/api/v1/communities')
+      .set(...owner.auth)
+      .send(newCommunityPayload({ name: 'Admin Notice Circle' }))
+      .expect(201);
+
+    const notifications = await api()
+      .get('/api/v1/notifications')
+      .set(...admin.auth)
+      .expect(200);
+    const notification = notifications.body.data.find(
+      (item) => item.type === 'community_submitted',
+    );
+
+    expect(notification).toMatchObject({
+      message: 'Admin Notice Circle is waiting for platform approval',
+      link: '/admin',
+      isRead: false,
+    });
+    expect(notification.community._id).toBe(created.body.data.community._id);
+  });
+
   it('rejects a community with no city', async () => {
     const owner = await registerUser();
     const res = await api()

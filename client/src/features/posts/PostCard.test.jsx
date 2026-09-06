@@ -111,4 +111,19 @@ describe('PostCard', () => {
     expect(screen.getByText(longBody)).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /read more/i })).not.toBeInTheDocument();
   });
+
+  it('opens a post image at full size', async () => {
+    renderWithProviders(
+      <PostCard
+        post={makePost({ imageUrl: '/uploads/festival.jpg', imageAlt: 'Festival decorations' })}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole('button', { name: /view post image full size/i }));
+
+    expect(
+      screen.getByRole('dialog', { name: /temple festival dates confirmed/i }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByAltText('Festival decorations')).toHaveLength(2);
+  });
 });

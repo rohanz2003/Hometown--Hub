@@ -6,12 +6,14 @@
  */
 const Community = require('../models/Community');
 const Membership = require('../models/Membership');
+const { notifyPlatformAdmins } = require('./notificationService');
 const ApiError = require('../utils/ApiError');
 const { parsePagination, buildPageMeta } = require('../utils/pagination');
 const {
   COMMUNITY_ROLES,
   COMMUNITY_STATUS,
   MEMBERSHIP_STATUS,
+  NOTIFICATION_TYPES,
   SORT_OPTIONS,
 } = require('../utils/constants');
 
@@ -104,6 +106,14 @@ async function createCommunity({ userId, data }) {
     community: community._id,
     role: COMMUNITY_ROLES.ADMIN,
     status: MEMBERSHIP_STATUS.APPROVED,
+  });
+
+  await notifyPlatformAdmins({
+    actor: userId,
+    community: community._id,
+    type: NOTIFICATION_TYPES.COMMUNITY_SUBMITTED,
+    message: `${community.name} is waiting for platform approval`,
+    link: '/admin',
   });
 
   return community;

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../components/ui/Avatar';
 import Badge from '../../components/ui/Badge';
 import ConfirmDialog from '../../components/ui/ConfirmDialog';
+import Modal from '../../components/ui/Modal';
 import ReportDialog from './ReportDialog';
 import PostActions from './PostActions';
 import { useToast } from '../../context/ToastContext';
@@ -27,6 +28,7 @@ export default function PostCard({
   const toast = useToast();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [reporting, setReporting] = useState(false);
+  const [imageOpen, setImageOpen] = useState(false);
   const [isBusy, setIsBusy] = useState(false);
 
   const patch = (changes) => onPatch?.(post._id, changes);
@@ -164,12 +166,35 @@ export default function PostCard({
         )}
 
         {post.imageUrl && (
-          <img
-            src={mediaUrl(post.imageUrl)}
-            alt={post.imageAlt || `Image shared with the post "${post.title || 'untitled'}"`}
-            loading="lazy"
-            className="mt-3 max-h-96 w-full rounded-lg border border-line object-cover"
-          />
+          <>
+            <button
+              type="button"
+              onClick={() => setImageOpen(true)}
+              aria-label="View post image full size"
+              className="mt-3 block w-full cursor-zoom-in rounded-lg text-left focus-visible:ring-2 focus-visible:ring-primary-glow"
+            >
+              <img
+                src={mediaUrl(post.imageUrl)}
+                alt={post.imageAlt || `Image shared with the post "${post.title || 'untitled'}"`}
+                loading="lazy"
+                className="max-h-96 w-full rounded-lg border border-line object-cover"
+              />
+            </button>
+
+            <Modal
+              isOpen={imageOpen}
+              onClose={() => setImageOpen(false)}
+              title={post.title || 'Post image'}
+              size="full"
+              className="max-w-[96vw]"
+            >
+              <img
+                src={mediaUrl(post.imageUrl)}
+                alt={post.imageAlt || `Image shared with the post "${post.title || 'untitled'}"`}
+                className="mx-auto max-h-[calc(100vh-10rem)] w-auto max-w-full object-contain"
+              />
+            </Modal>
+          </>
         )}
 
         {post.tags?.length > 0 && (
