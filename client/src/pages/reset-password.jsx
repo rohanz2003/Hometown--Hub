@@ -12,6 +12,7 @@ import { Input } from '../components/ui/Field';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { resetPasswordSchema } from '../utils/validators';
+import { LinkIcon } from '../components/ui/icons';
 
 export default function ResetPasswordPage() {
   const [params] = useSearchParams();
@@ -47,9 +48,7 @@ export default function ResetPasswordPage() {
   if (!token || !email) {
     return (
       <div className="hh-card px-5 py-6 text-center sm:px-7 sm:py-8">
-        <span aria-hidden="true" className="text-4xl">
-          🔗
-        </span>
+        <LinkIcon aria-hidden="true" className="text-4xl text-warning" strokeWidth={1.5} />
         <h1 className="mt-3 text-xl font-bold">That reset link is incomplete</h1>
         <p className="mt-2 text-sm text-ink-muted">
           Reset links expire after 30 minutes. Request a fresh one to continue.

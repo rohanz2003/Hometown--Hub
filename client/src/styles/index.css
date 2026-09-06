@@ -3,74 +3,106 @@
 @tailwind utilities;
 
 /*
- * Design tokens from design.md § 2, as "R G B" triplets so Tailwind can apply
- * opacity modifiers (e.g. `bg-primary/10`). Switching `.dark` on <html> retints
- * the whole app.
+ * Professional design tokens — refined neutral palette with sophisticated accent colors.
+ * Inspired by modern Web3/platform aesthetics (kktoken.cc reference).
+ * Colors as "R G B" triplets for Tailwind opacity modifiers (e.g. `bg-primary/10`).
+ * Switching `.dark` on <html> retints the whole app.
  */
 @layer base {
   :root {
-    --color-primary: 47 111 237; /* #2F6FED — trust, connection */
-    --color-primary-hover: 35 92 208;
-    --color-primary-soft: 232 239 254;
-    --color-secondary: 63 163 77; /* #3FA34D — community, locality */
-    --color-secondary-soft: 232 246 234;
-    --color-accent: 242 153 74; /* #F2994A — events, highlights */
-    --color-accent-soft: 253 242 232;
+    /* Primary - Deep professional blue (trust, reliability) */
+    --color-primary: 15 23 42;           /* #0F172A - slate-900 */
+    --color-primary-hover: 30 41 59;     /* #1E293B - slate-800 */
+    --color-primary-soft: 226 232 240;   /* #E2E8F0 - slate-200 */
+    --color-primary-glow: 59 130 246;    /* #3B82F6 - blue-500 for glows/accents */
 
-    --color-background: 250 250 250; /* #FAFAFA */
-    --color-surface: 255 255 255; /* #FFFFFF */
-    --color-surface-muted: 245 246 248;
-    --color-text: 31 31 31; /* #1F1F1F */
-    --color-text-muted: 90 95 104;
-    --color-text-subtle: 130 136 146;
-    --color-border: 227 229 234;
+    /* Secondary - Refined emerald (growth, community) */
+    --color-secondary: 4 120 87;         /* #047857 - emerald-700 */
+    --color-secondary-soft: 209 250 229; /* #D1FAE5 - emerald-100 */
+    --color-secondary-glow: 16 185 129;  /* #10B981 - emerald-500 */
 
-    --color-success: 39 174 96; /* #27AE60 */
-    --color-success-soft: 230 247 237;
-    --color-warning: 242 201 76; /* #F2C94C */
-    --color-warning-soft: 254 248 230;
-    --color-error: 235 87 87; /* #EB5757 */
-    --color-error-soft: 253 235 235;
+    /* Accent - Warm amber (events, highlights, CTAs) */
+    --color-accent: 217 119 6;           /* #D97706 - amber-600 */
+    --color-accent-soft: 254 243 199;    /* #FEF3C7 - amber-100 */
+    --color-accent-glow: 245 158 11;     /* #F59E0B - amber-500 */
 
-    /*
-     * Chart series. Blue + orange rather than the brand blue + green: the
-     * blue/green pair scores ΔE 7 under tritanopia, blue/orange scores 29.7.
-     * Both steps validated for the light surface (lightness band, chroma floor,
-     * CVD separation, contrast).
-     */
-    --color-chart-1: 47 111 237; /* posts   #2F6FED */
-    --color-chart-2: 242 153 74; /* events  #F2994A */
-    --color-chart-grid: 227 229 234;
+    /* Neutral canvas & surfaces */
+    --color-background: 248 250 252;     /* #F8FAFC - slate-50 */
+    --color-surface: 255 255 255;        /* #FFFFFF - white */
+    --color-surface-muted: 241 245 249;  /* #F1F5F9 - slate-100 */
+    --color-surface-hover: 226 232 240;  /* #E2E8F0 - slate-200 */
+
+    /* Text hierarchy */
+    --color-text: 15 23 42;              /* #0F172A - slate-900 */
+    --color-text-muted: 71 85 105;       /* #475569 - slate-600 */
+    --color-text-subtle: 148 163 184;    /* #94A3B8 - slate-400 */
+    --color-text-inverse: 255 255 255;   /* #FFFFFF - white */
+
+    /* Borders */
+    --color-border: 226 232 240;         /* #E2E8F0 - slate-200 */
+    --color-border-strong: 203 213 225;  /* #CBD5E1 - slate-300 */
+
+    /* Semantic colors */
+    --color-success: 5 150 105;          /* #059669 - emerald-600 */
+    --color-success-soft: 209 250 229;   /* #D1FAE5 - emerald-100 */
+    --color-warning: 217 119 6;          /* #D97706 - amber-600 */
+    --color-warning-soft: 254 243 199;   /* #FEF3C7 - amber-100 */
+    --color-error: 220 38 38;            /* #DC2626 - red-600 */
+    --color-error-soft: 254 226 226;     /* #FEE2E2 - red-100 */
+    --color-error-glow: 239 68 68;       /* #EF4444 - red-500 */
+
+    /* Chart series - colorblind safe */
+    --color-chart-1: 15 23 42;           /* slate-900 */
+    --color-chart-2: 217 119 6;          /* amber-600 */
+    --color-chart-grid: 226 232 240;     /* slate-200 */
   }
 
   .dark {
-    --color-primary: 122 162 249;
-    --color-primary-hover: 149 181 250;
-    --color-primary-soft: 30 41 66;
-    --color-secondary: 109 202 122;
-    --color-secondary-soft: 26 45 31;
-    --color-accent: 245 176 112;
-    --color-accent-soft: 55 40 26;
+    /* Primary - Bright professional blue for dark mode */
+    --color-primary: 248 250 252;        /* slate-50 */
+    --color-primary-hover: 226 232 240;  /* slate-200 */
+    --color-primary-soft: 30 41 59;      /* slate-800 */
+    --color-primary-glow: 96 165 250;    /* blue-400 */
 
-    --color-background: 18 18 18; /* #121212 */
-    --color-surface: 30 30 30; /* #1E1E1E */
-    --color-surface-muted: 38 38 40;
-    --color-text: 237 237 237; /* #EDEDED */
-    --color-text-muted: 173 176 182;
-    --color-text-subtle: 132 136 143;
-    --color-border: 55 56 60;
+    /* Secondary - Bright emerald for dark mode */
+    --color-secondary: 110 231 183;      /* emerald-300 */
+    --color-secondary-soft: 6 78 59;     /* emerald-900 */
+    --color-secondary-glow: 34 197 94;   /* #22C55E - emerald-400 */
 
-    --color-success: 82 196 129;
-    --color-success-soft: 22 46 33;
-    --color-warning: 245 212 108;
-    --color-warning-soft: 52 45 22;
-    --color-error: 242 122 122;
-    --color-error-soft: 55 27 27;
+    /* Accent - Bright amber for dark mode */
+    --color-accent: 251 191 36;          /* amber-400 */
+    --color-accent-soft: 73 42 5;        /* amber-900 */
+    --color-accent-glow: 251 191 36;     /* #FBBF24 - amber-400 */
 
-    /* Re-stepped for the dark surface, not an automatic flip of the light pair. */
-    --color-chart-1: 90 143 240; /* posts   #5A8FF0 */
-    --color-chart-2: 204 127 56; /* events  #CC7F38 */
-    --color-chart-grid: 55 56 60;
+    /* Neutral canvas & surfaces */
+    --color-background: 2 6 23;          /* #020617 - slate-950 */
+    --color-surface: 15 23 42;           /* #0F172A - slate-900 */
+    --color-surface-muted: 30 41 59;     /* #1E293B - slate-800 */
+    --color-surface-hover: 51 65 85;     /* #334155 - slate-700 */
+
+    /* Text hierarchy */
+    --color-text: 248 250 252;           /* slate-50 */
+    --color-text-muted: 148 163 184;     /* slate-400 */
+    --color-text-subtle: 100 116 139;    /* slate-500 */
+    --color-text-inverse: 15 23 42;      /* slate-900 */
+
+    /* Borders */
+    --color-border: 51 65 85;            /* slate-700 */
+    --color-border-strong: 71 85 105;    /* slate-600 */
+
+    /* Semantic colors */
+    --color-success: 16 185 129;         /* emerald-500 */
+    --color-success-soft: 6 78 59;       /* emerald-900 */
+    --color-warning: 251 191 36;         /* amber-400 */
+    --color-warning-soft: 73 42 5;       /* amber-900 */
+    --color-error: 248 113 113;          /* red-400 */
+    --color-error-soft: 127 29 29;       /* red-900 */
+    --color-error-glow: 248 113 113;     /* #F87171 - red-400 */
+
+    /* Chart series - re-stepped for dark surface */
+    --color-chart-1: 148 163 184;        /* slate-400 */
+    --color-chart-2: 251 191 36;         /* amber-400 */
+    --color-chart-grid: 51 65 85;        /* slate-700 */
   }
 
   html {
@@ -78,19 +110,16 @@
   }
 
   body {
-    @apply bg-canvas font-sans text-base text-ink antialiased;
+    @apply bg-[rgb(var(--color-background))] font-sans text-base text-[rgb(var(--color-text))] antialiased;
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-semibold tracking-[-0.01em] text-ink;
+  h1, h2, h3, h4 {
+    @apply font-semibold tracking-[-0.02em] text-[rgb(var(--color-text))];
   }
 
-  /* A single, consistent focus ring — never remove it (design.md § 1). */
+  /* Consistent focus ring — never remove it */
   :focus-visible {
-    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-canvas;
+    @apply outline-none ring-2 ring-[rgb(var(--color-primary-glow))] ring-offset-2 ring-offset-[rgb(var(--color-background))];
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -104,31 +133,78 @@
 }
 
 @layer components {
-  /* Reusable surface for cards and panels. */
+  /* Professional card surface with subtle depth */
   .hh-card {
-    @apply rounded-card border border-line bg-surface shadow-card;
+    @apply rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-surface))] shadow-sm transition-shadow duration-200 hover:shadow-md;
   }
 
+  .hh-card-elevated {
+    @apply rounded-xl border border-[rgb(var(--color-border))] bg-[rgb(var(--color-surface))] shadow-lg;
+  }
+
+  /* Refined input styling */
   .hh-input {
-    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-base text-ink
-      placeholder:text-ink-subtle
-      focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30
-      disabled:cursor-not-allowed disabled:bg-surface-muted;
+    @apply w-full rounded-lg border border-[rgb(var(--color-border))] bg-[rgb(var(--color-surface))] px-3 py-2.5 text-base text-[rgb(var(--color-text))]
+      placeholder:text-[rgb(var(--color-text-subtle))]
+      focus:border-[rgb(var(--color-primary-glow))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-primary-glow))/0.15]
+      disabled:cursor-not-allowed disabled:bg-[rgb(var(--color-surface-muted))] disabled:text-[rgb(var(--color-text-subtle))]
+      transition-colors duration-150;
   }
 
   .hh-label {
-    @apply mb-1.5 block text-sm font-medium text-ink-muted;
+    @apply mb-1.5 block text-sm font-medium text-[rgb(var(--color-text-muted))];
   }
 
-  /* Skip link for keyboard users; visible only when focused. */
+  /* Skip link for keyboard users */
   .hh-skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50
-      focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white;
+      focus:rounded-lg focus:bg-[rgb(var(--color-primary))] focus:px-4 focus:py-2 focus:text-white;
+  }
+
+  /* Professional button base - extended in Button.jsx */
+  .hh-btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-150
+      focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary-glow))] focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--color-background))]
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Subtle divider */
+  .hh-divider {
+    @apply h-px bg-[rgb(var(--color-border))] border-0;
   }
 }
 
 @layer utilities {
   .hh-scroll-thin {
     scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-border)) transparent;
+  }
+
+  .hh-scroll-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hh-scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .hh-scroll-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-border));
+    border-radius: 3px;
+  }
+
+  .hh-scroll-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--color-border-strong));
+  }
+
+  /* Text balance for headlines */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-gradient-to-r from-[rgb(var(--color-primary))] to-[rgb(var(--color-primary-glow))] bg-clip-text text-transparent;
   }
 }

@@ -12,7 +12,7 @@ import { useToast } from '../context/ToastContext';
 import usePaginatedList from '../hooks/usePaginatedList';
 import * as userService from '../services/userService';
 import { formatRelative } from '../utils/format';
-import { NOTIFICATION_ICONS } from '../utils/constants';
+import { NotificationsIcon as BellIcon, CloseIcon } from '../components/ui/icons';
 
 const TABS = [
   { value: 'all', label: 'All' },
@@ -89,7 +89,7 @@ export default function NotificationsPage() {
 
         {list.isEmpty && (
           <EmptyState
-            icon="🔔"
+            icon="bell"
             title={activeTab === 'unread' ? 'Nothing unread' : 'No notifications yet'}
             description="When something happens in your communities, it shows up here."
           />
@@ -103,9 +103,13 @@ export default function NotificationsPage() {
                 key={notification._id}
                 className={`flex items-start gap-3 px-4 py-3 ${notification.isRead ? '' : 'bg-primary-soft/40'}`}
               >
-                <span aria-hidden="true" className="mt-0.5 text-lg">
-                  {NOTIFICATION_ICONS[notification.type] || '🔔'}
-                </span>
+                <BellIcon
+                  aria-hidden="true"
+                  className={`mt-0.5 h-5 w-5 flex-shrink-0 ${
+                    notification.isRead ? 'text-ink-subtle' : 'text-primary'
+                  }`}
+                  strokeWidth={2}
+                />
 
                 <Wrapper
                   {...(notification.link ? { to: notification.link } : {})}
@@ -137,7 +141,7 @@ export default function NotificationsPage() {
                     aria-label="Dismiss this notification"
                     className="rounded p-1 text-ink-subtle hover:bg-surface-muted hover:text-error"
                   >
-                    <span aria-hidden="true">✕</span>
+                    <CloseIcon className="h-4 w-4" strokeWidth={2} />
                   </button>
                 </div>
               </li>

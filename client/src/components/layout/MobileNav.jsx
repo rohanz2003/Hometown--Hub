@@ -13,27 +13,32 @@ export default function MobileNav() {
   return (
     <nav
       aria-label="Main navigation"
-      className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80 pb-[env(safe-area-inset-bottom)] md:hidden"
     >
       <ul className="flex">
-        {items.map((item) => (
-          <li key={item.to} className="flex-1">
-            <NavLink
-              to={item.to}
-              className={({ isActive }) =>
-                [
-                  'flex h-14 flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-colors',
-                  isActive ? 'text-primary' : 'text-ink-subtle hover:text-ink',
-                ].join(' ')
-              }
-            >
-              <span aria-hidden="true" className="text-lg leading-none">
-                {item.icon}
-              </span>
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
+        {items.map((item) => {
+          const Icon = item.icon;
+          return (
+            <li key={item.to} className="flex-1">
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  [
+                    'flex h-14 flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors',
+                    isActive ? 'text-primary' : 'text-ink-subtle hover:text-ink',
+                  ].join(' ')
+                }
+              >
+                <Icon
+                  aria-hidden="true"
+                  className="h-6 w-6 leading-none"
+                  strokeWidth={2.5}
+                />
+                {item.label}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

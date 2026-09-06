@@ -17,6 +17,13 @@ import useAsync from '../hooks/useAsync';
 import * as dashboardService from '../services/dashboardService';
 import { formatEventWindow, formatLocation, formatRelative } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS, NOTIFICATION_ICONS } from '../utils/constants';
+import {
+  CommunityIcon as BuildingIcon,
+  EventsIcon as CalendarIcon,
+  NotificationBellIcon as BellIcon,
+  EditIcon,
+  MembersIcon as UsersIcon,
+} from '../components/ui/icons';
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -43,28 +50,28 @@ export default function DashboardPage() {
         <StatCard
           label="Communities"
           value={stats.communities}
-          icon="🏘️"
+          icon={BuildingIcon}
           to="/communities"
           accent="primary"
         />
         <StatCard
           label="Upcoming events"
           value={stats.upcomingEvents}
-          icon="📅"
+          icon={CalendarIcon}
           to="/events"
           accent="accent"
         />
         <StatCard
           label="Unread notifications"
           value={stats.unreadNotifications}
-          icon="🔔"
+          icon={BellIcon}
           to="/notifications"
           accent="secondary"
         />
         <StatCard
           label="Your posts"
           value={stats.myPosts}
-          icon="✍️"
+          icon={EditIcon}
           hint={`${stats.likesReceived} ${stats.likesReceived === 1 ? 'like' : 'likes'} received`}
           accent="muted"
         />
@@ -88,7 +95,7 @@ export default function DashboardPage() {
           />
           {communities.length === 0 ? (
             <EmptyState
-              icon="🏘️"
+              icon="users"
               title="No communities yet"
               description="Find your hometown, or start a new community for it."
               action={
@@ -105,12 +112,11 @@ export default function DashboardPage() {
                     to={`/communities/${community.slug}`}
                     className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-surface-muted"
                   >
-                    <span
+                    <UsersIcon
                       aria-hidden="true"
-                      className="grid h-9 w-9 place-items-center rounded-lg bg-primary-soft"
-                    >
-                      🏘️
-                    </span>
+                      className="grid h-9 w-9 place-items-center rounded-lg bg-primary-soft text-primary"
+                      strokeWidth={2}
+                    />
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium">{community.name}</span>
                       <span className="block truncate text-xs text-ink-subtle">
@@ -138,7 +144,7 @@ export default function DashboardPage() {
           />
           {upcomingEvents.length === 0 ? (
             <EmptyState
-              icon="📅"
+              icon="calendar"
               title="Nothing scheduled"
               description="When your communities plan something, it will show up here."
             />
@@ -150,12 +156,11 @@ export default function DashboardPage() {
                     to={`/events/${event._id}`}
                     className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-surface-muted"
                   >
-                    <span
+                    <CalendarIcon
                       aria-hidden="true"
-                      className="grid h-9 w-9 place-items-center rounded-lg bg-accent-soft"
-                    >
-                      📅
-                    </span>
+                      className="grid h-9 w-9 place-items-center rounded-lg bg-accent-soft text-accent"
+                      strokeWidth={2}
+                    />
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium">{event.title}</span>
                       <span className="block truncate text-xs text-accent">
@@ -184,7 +189,7 @@ export default function DashboardPage() {
         />
         {notifications.length === 0 ? (
           <EmptyState
-            icon="🔔"
+            icon="bell"
             title="Nothing new"
             description="Activity in your communities shows up here."
           />
@@ -195,9 +200,13 @@ export default function DashboardPage() {
                 key={notification._id}
                 className={`flex items-start gap-3 px-4 py-3 ${notification.isRead ? '' : 'bg-primary-soft/40'}`}
               >
-                <span aria-hidden="true" className="text-base">
-                  {NOTIFICATION_ICONS[notification.type] || '🔔'}
-                </span>
+                <BellIcon
+                  aria-hidden="true"
+                  className={`mt-0.5 h-5 w-5 flex-shrink-0 ${
+                    notification.isRead ? 'text-ink-subtle' : 'text-primary'
+                  }`}
+                  strokeWidth={2}
+                />
                 <div className="min-w-0 flex-1">
                   <p className="text-sm text-ink">{notification.message}</p>
                   <p className="text-xs text-ink-subtle">

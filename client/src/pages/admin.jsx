@@ -25,6 +25,19 @@ import usePaginatedList from '../hooks/usePaginatedList';
 import * as adminService from '../services/adminService';
 import { formatDate, formatLocation, formatRelative } from '../utils/format';
 import { COMMUNITY_STATUS_LABELS } from '../utils/constants';
+import {
+  MembersIcon as UsersIcon,
+  ZapIcon as ZapIcon,
+  CommunityIcon as BuildingIcon,
+  TimeIcon as ClockIcon,
+  PostIcon as FileTextIcon,
+  CommentIcon as MessageSquareIcon,
+  EventsIcon as CalendarIcon,
+  ReportIcon as FlagIcon,
+  SuccessIcon as CheckCircleIcon,
+  WarningIcon as AlertTriangleIcon,
+  TagIcon,
+} from '../components/ui/icons';
 
 export default function AdminPage() {
   const [tab, setTab] = useState('overview');
@@ -77,34 +90,34 @@ function Overview() {
         <StatCard
           label="Registered users"
           value={data.users}
-          icon="👥"
+          icon={UsersIcon}
           hint={`${data.newUsers} joined this week`}
         />
         <StatCard
           label="Active this week"
           value={data.activeUsers}
-          icon="⚡"
+          icon={ZapIcon}
           accent="secondary"
           hint="Signed in within 7 days"
         />
-        <StatCard label="Live communities" value={data.communities} icon="🏘️" accent="accent" />
+        <StatCard label="Live communities" value={data.communities} icon={BuildingIcon} accent="accent" />
         <StatCard
           label="Awaiting review"
           value={data.pendingCommunities}
-          icon="⏳"
+          icon={ClockIcon}
           accent="muted"
           hint={data.pendingCommunities > 0 ? 'Needs your attention' : 'Queue is clear'}
         />
       </div>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <StatCard label="Posts" value={data.posts} icon="📰" />
-        <StatCard label="Comments" value={data.comments} icon="💬" accent="secondary" />
-        <StatCard label="Events" value={data.events} icon="📅" accent="accent" />
+        <StatCard label="Posts" value={data.posts} icon={FileTextIcon} />
+        <StatCard label="Comments" value={data.comments} icon={MessageSquareIcon} accent="secondary" />
+        <StatCard label="Events" value={data.events} icon={CalendarIcon} accent="accent" />
         <StatCard
           label="Open reports"
           value={data.openReports}
-          icon="🚩"
+          icon={FlagIcon}
           accent="muted"
           to="/moderation"
         />
@@ -173,7 +186,7 @@ function CommunityQueue() {
 
         {list.isEmpty && (
           <EmptyState
-            icon="✅"
+            icon="check-circle"
             title={`No ${list.filters.status} communities`}
             description={
               list.filters.status === 'pending'
@@ -353,7 +366,7 @@ function UserManagement() {
         {list.isLoading && <LoadingPanel label="Loading users" />}
         {list.error && <ErrorState error={list.error} onRetry={list.reload} />}
         {list.isEmpty && (
-          <EmptyState icon="👥" title="No users found" description="Try a different search." />
+          <EmptyState icon="users" title="No users found" description="Try a different search." />
         )}
 
         <ul className="divide-y divide-line">
@@ -478,7 +491,7 @@ function CategoryManagement() {
 
       {data?.length === 0 && (
         <EmptyState
-          icon="🏷️"
+          icon="tag"
           title="No categories yet"
           description="Add a few so members can file their posts."
           action={<Button onClick={() => setIsCreating(true)}>Add the first category</Button>}

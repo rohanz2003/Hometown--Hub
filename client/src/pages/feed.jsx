@@ -22,6 +22,7 @@ import * as communityService from '../services/communityService';
 import * as dashboardService from '../services/dashboardService';
 import * as postService from '../services/postService';
 import { POST_TYPES, SORT_OPTIONS } from '../utils/constants';
+import { Building2Icon as BuildingIcon, FeedIcon as NewspaperIcon } from '../components/ui/icons';
 
 export default function FeedPage() {
   const { feedView, setFeedView } = useTheme();
@@ -137,7 +138,7 @@ export default function FeedPage() {
         <Card>
           {joinable.length === 0 ? (
             <EmptyState
-              icon="🏘️"
+              icon="building"
               title="Join a community to see posts"
               description="Your feed fills up with updates from the communities you join."
               action={
@@ -148,7 +149,7 @@ export default function FeedPage() {
             />
           ) : (
             <EmptyState
-              icon="📰"
+              icon="file-text"
               title="Nothing here yet"
               description={
                 list.filters.q || list.filters.type

@@ -1,13 +1,14 @@
 /**
- * components/ui/Modal.jsx — accessible dialog.
+ * components/ui/Modal.jsx — accessible dialog with professional styling.
  *
  * Traps focus, closes on Escape or backdrop click, restores focus to whatever
  * opened it, and locks background scrolling.
  */
 import { useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
 
-const SIZES = { sm: 'max-w-sm', md: 'max-w-lg', lg: 'max-w-2xl', xl: 'max-w-4xl' };
+const SIZES = { sm: 'max-w-sm', md: 'max-w-lg', lg: 'max-w-2xl', xl: 'max-w-4xl', full: 'max-w-[90vw]' };
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -21,6 +22,7 @@ export default function Modal({
   footer,
   children,
   closeOnBackdrop = true,
+  className = '',
 }) {
   const panelRef = useRef(null);
   const previouslyFocused = useRef(null);
@@ -75,7 +77,7 @@ export default function Modal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto bg-black/50 p-0 animate-fade-in sm:items-center sm:p-4"
+      className="fixed inset-0 z-50 flex items-end justify-center overflow-y-auto bg-black/40 backdrop-blur-sm p-0 animate-fade-in sm:items-center sm:p-4"
       onMouseDown={(event) => {
         if (closeOnBackdrop && event.target === event.currentTarget) onClose();
       }}
@@ -88,29 +90,20 @@ export default function Modal({
         aria-modal="true"
         aria-label={title || 'Dialog'}
         tabIndex={-1}
-        className={`hh-card w-full animate-slide-up rounded-b-none shadow-pop sm:rounded-card ${SIZES[size] || SIZES.md}`}
+        className={`hh-card-elevated w-full animate-scale-in rounded-card shadow-modal ${SIZES[size] || SIZES.md} ${className}`}
       >
         <div className="flex items-start justify-between gap-4 border-b border-line px-4 py-3 sm:px-5">
           <div className="min-w-0">
-            <h2 className="truncate text-lg font-semibold">{title}</h2>
+            <h2 className="truncate text-lg font-semibold text-ink">{title}</h2>
             {description && <p className="mt-0.5 text-sm text-ink-muted">{description}</p>}
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="-mr-1 rounded-lg p-1.5 text-ink-subtle transition-colors hover:bg-surface-muted hover:text-ink"
+            className="-mr-1 rounded-lg p-1.5 text-ink-subtle transition-colors hover:bg-surface-hover hover:text-ink"
           >
-            <svg
-              viewBox="0 0 20 20"
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              aria-hidden="true"
-            >
-              <path d="M5 5l10 10M15 5L5 15" strokeLinecap="round" />
-            </svg>
+            <X className="h-5 w-5" strokeWidth={2} />
           </button>
         </div>
 

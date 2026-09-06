@@ -30,6 +30,7 @@ import * as eventService from '../services/eventService';
 import * as postService from '../services/postService';
 import { formatCount, formatLocation, mediaUrl } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS, COMMUNITY_STATUS_LABELS } from '../utils/constants';
+import { CommunityIcon as BuildingIcon, PrivateIcon as LockIcon, MapPinIcon, FeedIcon as NewspaperIcon, EventsIcon as CalendarIcon } from '../components/ui/icons';
 
 export default function CommunityDetailPage() {
   const { communityId } = useParams();
@@ -105,12 +106,11 @@ export default function CommunityDetailPage() {
             className="h-32 w-full object-cover sm:h-44"
           />
         ) : (
-          <div
+          <BuildingIcon
             aria-hidden="true"
-            className="grid h-24 w-full place-items-center bg-primary-soft text-4xl sm:h-32"
-          >
-            🏘️
-          </div>
+            className="grid h-24 w-full place-items-center bg-primary-soft text-primary sm:h-32"
+            strokeWidth={1.5}
+          />
         )}
 
         <div className="px-4 py-4">
@@ -123,12 +123,15 @@ export default function CommunityDetailPage() {
                     {COMMUNITY_STATUS_LABELS[data.status]}
                   </Badge>
                 )}
-                {data.visibility === 'private' && <Badge>🔒 Private</Badge>}
+                {data.visibility === 'private' && <Badge><LockIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Private</Badge>}
                 {data.myRole && data.myRole !== 'member' && (
                   <Badge tone="primary">{COMMUNITY_ROLE_LABELS[data.myRole]}</Badge>
                 )}
               </div>
-              <p className="mt-1 text-sm text-ink-subtle">📍 {formatLocation(data.location)}</p>
+              <p className="mt-1 text-sm text-ink-subtle">
+              <MapPinIcon className="inline h-3.5 w-3.5 mr-1" strokeWidth={2} aria-hidden="true" />
+              {formatLocation(data.location)}
+            </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -191,7 +194,7 @@ export default function CommunityDetailPage() {
           {posts.isEmpty && (
             <Card>
               <EmptyState
-                icon="📰"
+                icon="file-text"
                 title="No posts yet"
                 description={isMember ? 'Start the conversation.' : 'Join to post here.'}
               />
@@ -235,7 +238,7 @@ export default function CommunityDetailPage() {
           {events.isEmpty && (
             <Card>
               <EmptyState
-                icon="📅"
+                icon="calendar"
                 title="Nothing scheduled"
                 description={
                   isMember ? 'Organise the first gathering.' : 'No upcoming events here yet.'

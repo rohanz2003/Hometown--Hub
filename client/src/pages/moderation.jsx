@@ -19,6 +19,7 @@ import { useToast } from '../context/ToastContext';
 import usePaginatedList from '../hooks/usePaginatedList';
 import * as adminService from '../services/adminService';
 import { formatRelative, truncate } from '../utils/format';
+import { ShieldIcon } from '../components/ui/icons';
 
 const TABS = [
   { value: 'open', label: 'Open' },
@@ -71,7 +72,7 @@ export default function ModerationPage() {
 
         {list.isEmpty && (
           <EmptyState
-            icon="🛡️"
+            icon="shield"
             title={
               list.filters.status === 'open'
                 ? 'Nothing to review'

@@ -18,6 +18,7 @@ import useAsync from '../../hooks/useAsync';
 import * as postService from '../../services/postService';
 import { formatRelative } from '../../utils/format';
 import { commentSchema } from '../../utils/validators';
+import { LikeIcon as HeartIcon, UnlikeIcon as HeartOffIcon, CommentIcon } from '../../components/ui/icons';
 
 export default function CommentSection({ post, canComment, canModerate, onCountChange }) {
   const toast = useToast();
@@ -101,7 +102,7 @@ export default function CommentSection({ post, canComment, canModerate, onCountC
 
       {!isLoading && !error && threads.length === 0 && (
         <EmptyState
-          icon="💬"
+          icon="message-square"
           title="No comments yet"
           description={
             canComment ? 'Be the first to reply.' : 'Nobody has replied to this post yet.'
@@ -209,7 +210,8 @@ function Comment({ comment, canModerate, canReply, onReply, onDelete, onPatch })
             onClick={handleLike}
             className={`font-medium transition-colors ${comment.isLiked ? 'text-primary' : 'text-ink-subtle hover:text-ink'}`}
           >
-            <span aria-hidden="true">{comment.isLiked ? '❤️' : '🤍'}</span> {comment.likeCount || 0}
+            {comment.isLiked ? <HeartIcon className="h-4 w-4 inline mr-0.5" strokeWidth={2} /> : <HeartOffIcon className="h-4 w-4 inline mr-0.5" strokeWidth={2} />}
+            {comment.likeCount || 0}
             <span className="sr-only">{comment.isLiked ? 'Unlike' : 'Like'} this comment</span>
           </button>
 

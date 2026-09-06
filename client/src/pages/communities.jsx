@@ -22,6 +22,7 @@ import usePaginatedList from '../hooks/usePaginatedList';
 import { useTheme } from '../context/ThemeContext';
 import * as communityService from '../services/communityService';
 import { SORT_OPTIONS } from '../utils/constants';
+import { SearchIcon, Building2Icon as BuildingIcon } from '../components/ui/icons';
 
 export default function CommunitiesPage() {
   const [params, setParams] = useSearchParams();
@@ -123,7 +124,7 @@ export default function CommunitiesPage() {
           {list.isEmpty && (
             <Card>
               <EmptyState
-                icon="🔍"
+                icon="search"
                 title="No communities found"
                 description={
                   search || city
@@ -168,7 +169,7 @@ export default function CommunitiesPage() {
         {mine.data?.length === 0 && (
           <Card>
             <EmptyState
-              icon="🏘️"
+              icon="building"
               title="You have not joined anything yet"
               description="Join a community from the directory, and it will appear here."
               action={<Button onClick={() => setTab('all')}>Browse the directory</Button>}

@@ -5,9 +5,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatCount } from '../../utils/format';
+import {
+  LikeIcon as HeartIcon,
+  UnlikeIcon as HeartOffIcon,
+  CommentIcon,
+  ShareIcon,
+  MoreIcon,
+  EditIcon,
+  PinIcon,
+  UnpinIcon as PinOffIcon,
+  HideIcon,
+  ReportIcon as FlagIcon,
+  DeleteIcon,
+} from '../../components/ui/icons';
 
 function ActionButton({
-  icon,
+  Icon,
   label,
   count,
   isActive,
@@ -27,7 +40,7 @@ function ActionButton({
         isActive ? 'text-primary' : 'text-ink-muted',
       ].join(' ')}
     >
-      <span aria-hidden="true">{icon}</span>
+      <Icon className="h-5 w-5 flex-shrink-0" strokeWidth={2} aria-hidden="true" />
       <span className="tabular-nums">{formatCount(count)}</span>
       <span className="sr-only">{label}</span>
     </Component>
@@ -68,7 +81,7 @@ export default function PostActions({
   return (
     <footer className="mt-3 flex items-center gap-1 border-t border-line px-2 py-1.5">
       <ActionButton
-        icon={post.isLiked ? '❤️' : '🤍'}
+        Icon={post.isLiked ? HeartIcon : HeartOffIcon}
         label={post.isLiked ? 'Unlike this post' : 'Like this post'}
         count={post.likeCount}
         isActive={post.isLiked}
@@ -77,13 +90,13 @@ export default function PostActions({
         title={post.canInteract === false ? 'Join this community to like posts' : undefined}
       />
       <ActionButton
+        Icon={CommentIcon}
         as={Link}
         to={`/posts/${post._id}`}
-        icon="💬"
         label="View comments"
         count={post.commentCount}
       />
-      <ActionButton icon="↗" label="Share this post" count={post.shareCount} onClick={onShare} />
+      <ActionButton Icon={ShareIcon} label="Share this post" count={post.shareCount} onClick={onShare} />
 
       <div ref={menuRef} className="relative ml-auto">
         <button
@@ -94,7 +107,7 @@ export default function PostActions({
           disabled={isBusy}
           className="grid h-8 w-8 place-items-center rounded-lg text-ink-subtle transition-colors hover:bg-surface-muted hover:text-ink disabled:opacity-50"
         >
-          <span aria-hidden="true">⋯</span>
+          <MoreIcon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
           <span className="sr-only">More actions for this post</span>
         </button>
 
@@ -110,7 +123,8 @@ export default function PostActions({
                 onClick={() => setMenuOpen(false)}
                 className="flex w-full items-center gap-2 px-3 py-2 text-sm text-ink-muted hover:bg-surface-muted hover:text-ink"
               >
-                <span aria-hidden="true">✏️</span> Edit post
+                <EditIcon className="h-5 w-5" strokeWidth={2} />
+                Edit post
               </Link>
             )}
 
@@ -125,7 +139,8 @@ export default function PostActions({
                   }}
                   className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink-muted hover:bg-surface-muted hover:text-ink"
                 >
-                  <span aria-hidden="true">📌</span> {post.isPinned ? 'Unpin post' : 'Pin post'}
+                  {post.isPinned ? <PinOffIcon className="h-5 w-5" strokeWidth={2} /> : <PinIcon className="h-5 w-5" strokeWidth={2} />}
+                  {post.isPinned ? 'Unpin post' : 'Pin post'}
                 </button>
                 <button
                   type="button"
@@ -136,7 +151,8 @@ export default function PostActions({
                   }}
                   className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink-muted hover:bg-surface-muted hover:text-ink"
                 >
-                  <span aria-hidden="true">🙈</span> Hide from community
+                  <HideIcon className="h-5 w-5" strokeWidth={2} />
+                  Hide from community
                 </button>
               </>
             )}
@@ -151,7 +167,8 @@ export default function PostActions({
                 }}
                 className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink-muted hover:bg-surface-muted hover:text-ink"
               >
-                <span aria-hidden="true">🚩</span> Report post
+                <FlagIcon className="h-5 w-5" strokeWidth={2} />
+                Report post
               </button>
             )}
 
@@ -165,7 +182,8 @@ export default function PostActions({
                 }}
                 className="flex w-full items-center gap-2 border-t border-line px-3 py-2 text-left text-sm text-error hover:bg-error-soft"
               >
-                <span aria-hidden="true">🗑️</span> Delete post
+                <DeleteIcon className="h-5 w-5" strokeWidth={2} />
+                Delete post
               </button>
             )}
           </div>

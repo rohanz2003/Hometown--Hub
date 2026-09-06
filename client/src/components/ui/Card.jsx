@@ -1,5 +1,6 @@
 /**
  * components/ui/Card.jsx — the surface every panel in the app sits on.
+ * Professional card with refined shadows and borders.
  */
 export default function Card({ as: Component = 'div', className = '', children, ...props }) {
   return (
@@ -16,8 +17,8 @@ export function CardHeader({ title, description, actions, className = '', childr
       className={`flex flex-wrap items-start justify-between gap-3 border-b border-line px-4 py-3 sm:px-5 ${className}`}
     >
       <div className="min-w-0">
-        {title && <h2 className="truncate text-lg font-semibold">{title}</h2>}
-        {description && <p className="mt-0.5 text-sm text-ink-muted">{description}</p>}
+        {title && <h2 className="truncate text-lg font-semibold text-ink">{title}</h2>}
+        {description && <p className="mt-1 text-sm text-ink-muted">{description}</p>}
         {children}
       </div>
       {actions && <div className="flex shrink-0 items-center gap-2">{actions}</div>}
@@ -36,5 +37,14 @@ export function CardFooter({ className = '', children }) {
     >
       {children}
     </div>
+  );
+}
+
+/** Elevated card for modals, dropdowns, popovers */
+export function ElevatedCard({ as: Component = 'div', className = '', children, ...props }) {
+  return (
+    <Component className={`hh-card-elevated ${className}`} {...props}>
+      {children}
+    </Component>
   );
 }

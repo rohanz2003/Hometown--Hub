@@ -12,6 +12,7 @@ import { useToast } from '../../context/ToastContext';
 import * as communityService from '../../services/communityService';
 import { formatCount, formatLocation, mediaUrl, truncate } from '../../utils/format';
 import { COMMUNITY_ROLE_LABELS, COMMUNITY_STATUS_LABELS } from '../../utils/constants';
+import { CommunityIcon as BuildingIcon, MapPinIcon, CheckIcon } from '../../components/ui/icons';
 
 export default function CommunityCard({ community, onPatch, view = 'list' }) {
   const toast = useToast();
@@ -50,14 +51,13 @@ export default function CommunityCard({ community, onPatch, view = 'list' }) {
           }
         />
       ) : (
-        <div
+        <BuildingIcon
           aria-hidden="true"
-          className={`grid place-items-center bg-primary-soft text-2xl ${
+          className={`grid place-items-center bg-primary-soft text-primary ${
             view === 'grid' ? 'h-20 w-full' : 'h-20 w-full sm:h-auto sm:w-24'
           }`}
-        >
-          🏘️
-        </div>
+          strokeWidth={1.5}
+        />
       )}
 
       <div className="flex min-w-0 flex-1 flex-col p-4">
@@ -69,7 +69,8 @@ export default function CommunityCard({ community, onPatch, view = 'list' }) {
               </Link>
             </h3>
             <p className="truncate text-sm text-ink-subtle">
-              📍 {formatLocation(community.location)}
+              <MapPinIcon className="inline h-3.5 w-3.5 mr-1" strokeWidth={2} aria-hidden="true" />
+              {formatLocation(community.location)}
             </p>
           </div>
 
@@ -110,7 +111,7 @@ export default function CommunityCard({ community, onPatch, view = 'list' }) {
           </Button>
 
           {isMember ? (
-            <Badge tone="success">✓ Joined</Badge>
+            <Badge tone="success"><CheckIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Joined</Badge>
           ) : isPending ? (
             <Badge tone="warning">Awaiting approval</Badge>
           ) : (

@@ -5,21 +5,22 @@
  * sits beside the form.
  */
 import { Link, Outlet } from 'react-router-dom';
+import { FeedIcon as NewsIcon, EventsIcon, SparklesIcon as CultureIcon } from '../../components/ui/icons';
 
 const HIGHLIGHTS = [
-  { icon: '📰', title: 'One place for local news', body: 'No more scattered group chats.' },
-  { icon: '📅', title: 'Organise real gatherings', body: 'Create events and see who is coming.' },
-  { icon: '🪔', title: 'Keep traditions alive', body: 'Share the stories and photos that matter.' },
+  { icon: NewsIcon, title: 'One place for local news', body: 'No more scattered group chats.' },
+  { icon: EventsIcon, title: 'Organise real gatherings', body: 'Create events and see who is coming.' },
+  { icon: CultureIcon, title: 'Keep traditions alive', body: 'Share the stories and photos that matter.' },
 ];
 
 export default function AuthLayout() {
   return (
     <div className="flex min-h-screen flex-col bg-canvas lg:flex-row">
-      <div className="hidden flex-1 flex-col justify-center bg-primary px-12 py-16 text-white lg:flex">
+      <div className="hidden flex-1 flex-col justify-center bg-primary px-12 py-16 text-white dark:bg-slate-900 dark:text-white lg:flex">
         <Link to="/" className="mb-10 inline-flex items-center gap-2.5">
           <span
             aria-hidden="true"
-            className="grid h-9 w-9 place-items-center rounded-lg bg-white/15 text-sm font-bold"
+            className="grid h-9 w-9 place-items-center rounded-lg bg-white/15 dark:bg-black/20 text-sm font-bold"
           >
             HH
           </span>
@@ -37,9 +38,11 @@ export default function AuthLayout() {
         <ul className="mt-10 space-y-5">
           {HIGHLIGHTS.map((item) => (
             <li key={item.title} className="flex max-w-md gap-3">
-              <span aria-hidden="true" className="text-xl">
-                {item.icon}
-              </span>
+              <item.icon
+                aria-hidden="true"
+                className="h-6 w-6 text-white/70 flex-shrink-0"
+                strokeWidth={2}
+              />
               <div>
                 <p className="font-medium text-white">{item.title}</p>
                 <p className="text-sm text-white/75">{item.body}</p>

@@ -20,6 +20,7 @@ import * as userService from '../services/userService';
 import { formatDate, formatLocation } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../utils/constants';
 import { profileSchema } from '../utils/validators';
+import { CommunityIcon as BuildingIcon, ModerationIcon as ShieldIcon, MapPinIcon, MembersIcon as UsersIcon } from '../components/ui/icons';
 
 export default function ProfilePage() {
   const { userId } = useParams();
@@ -48,9 +49,10 @@ function PublicProfile({ userId }) {
           <Avatar name={data.name} src={data.avatarUrl} size="xl" />
           <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-bold">{data.name}</h1>
-            <p className="mt-0.5 text-sm text-ink-subtle">
-              📍 From {formatLocation(data.hometown) || 'somewhere nearby'}
-              {data.hometown?.currentCity && ` · now in ${data.hometown.currentCity}`}
+            <p className="mt-0.5 text-sm text-ink-subtle flex items-center gap-1">
+              <MapPinIcon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              From {formatLocation(data.hometown) || 'somewhere nearby'}
+              {data.hometown?.currentCity && <span> · now in {data.hometown.currentCity}</span>}
             </p>
             {data.bio && <p className="mt-2 text-base text-ink-muted">{data.bio}</p>}
             <p className="mt-2 text-xs text-ink-subtle">
@@ -64,7 +66,7 @@ function PublicProfile({ userId }) {
         <CardHeader title="Communities" />
         {data.communities.length === 0 ? (
           <EmptyState
-            icon="🏘️"
+            icon="building"
             title="No public communities"
             description="This member has not joined any public community."
           />
@@ -159,17 +161,16 @@ function OwnProfile() {
       </header>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <StatCard label="Communities" value={communities.length} icon="🏘️" to="/communities" />
-        <StatCard label="Moderating" value={moderating.length} icon="🛡️" accent="secondary" />
+        <StatCard label="Communities" value={communities.length} icon={UsersIcon} to="/communities" />
+        <StatCard label="Moderating" value={moderating.length} icon={ShieldIcon} accent="secondary" />
         <div className="hh-card px-4 py-3.5">
           <div className="flex items-start justify-between gap-3">
             <p className="text-sm font-medium text-ink-muted">Hometown</p>
-            <span
+            <MapPinIcon
               aria-hidden="true"
-              className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-accent-soft text-base"
-            >
-              📍
-            </span>
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-accent-soft text-accent"
+              strokeWidth={2}
+            />
           </div>
           <p className="mt-1 truncate text-lg font-semibold text-ink">
             {formatLocation(user?.hometown) || 'Not set'}
@@ -252,7 +253,7 @@ function OwnProfile() {
         {mine.isLoading && <LoadingPanel label="Loading communities" />}
         {communities.length === 0 && !mine.isLoading && (
           <EmptyState
-            icon="🏘️"
+            icon="building"
             title="No communities yet"
             description="Join one to see it listed here."
           />

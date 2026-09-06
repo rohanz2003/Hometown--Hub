@@ -14,6 +14,7 @@ import EventCard from '../features/events/EventCard';
 import useDebounce from '../hooks/useDebounce';
 import usePaginatedList from '../hooks/usePaginatedList';
 import * as eventService from '../services/eventService';
+import { CalendarIcon } from '../components/ui/icons';
 
 const WHEN_TABS = [
   { value: 'upcoming', label: 'Upcoming' },
@@ -100,7 +101,7 @@ export default function EventsPage() {
       {list.isEmpty && (
         <Card>
           <EmptyState
-            icon="📅"
+            icon="calendar"
             title={list.filters.when === 'past' ? 'No past events' : 'Nothing scheduled yet'}
             description={
               list.filters.scope === 'joined'
