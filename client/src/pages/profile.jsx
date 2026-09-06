@@ -20,7 +20,12 @@ import * as userService from '../services/userService';
 import { formatDate, formatLocation } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../utils/constants';
 import { profileSchema } from '../utils/validators';
-import { CommunityIcon as BuildingIcon, ModerationIcon as ShieldIcon, MapPinIcon, MembersIcon as UsersIcon } from '../components/ui/icons';
+import {
+  CommunityIcon as BuildingIcon,
+  ModerationIcon as ShieldIcon,
+  MapPinIcon,
+  MembersIcon as UsersIcon,
+} from '../components/ui/icons';
 
 export default function ProfilePage() {
   const { userId } = useParams();
@@ -161,8 +166,18 @@ function OwnProfile() {
       </header>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        <StatCard label="Communities" value={communities.length} icon={UsersIcon} to="/communities" />
-        <StatCard label="Moderating" value={moderating.length} icon={ShieldIcon} accent="secondary" />
+        <StatCard
+          label="Communities"
+          value={communities.length}
+          icon={UsersIcon}
+          to="/communities"
+        />
+        <StatCard
+          label="Moderating"
+          value={moderating.length}
+          icon={ShieldIcon}
+          accent="secondary"
+        />
         <div className="hh-card px-4 py-3.5">
           <div className="flex items-start justify-between gap-3">
             <p className="text-sm font-medium text-ink-muted">Hometown</p>

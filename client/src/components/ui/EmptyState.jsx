@@ -5,7 +5,18 @@
  * leaving a blank panel.
  */
 import Button from './Button';
-import { Users, Search, Calendar, Bell, FileText, MessageSquare, Shield, User, Settings, BarChart2 } from 'lucide-react';
+import {
+  Users,
+  Search,
+  Calendar,
+  Bell,
+  FileText,
+  MessageSquare,
+  Shield,
+  User,
+  Settings,
+  BarChart2,
+} from 'lucide-react';
 
 const ICON_MAP = {
   users: Users,

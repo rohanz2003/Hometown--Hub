@@ -82,9 +82,16 @@ export default function EventCard({ event, onPatch, showCommunity = true }) {
         )}
 
         <p className="mt-2 text-sm text-ink-subtle flex items-center gap-1">
-          {event.location?.isOnline
-            ? <><MonitorIcon className="h-4 w-4" strokeWidth={2} aria-hidden="true" /> Online</>
-            : <><MapPinIcon className="h-4 w-4" strokeWidth={2} aria-hidden="true" /> {event.location?.venue || event.location?.city || 'Location to be confirmed'}</>}
+          {event.location?.isOnline ? (
+            <>
+              <MonitorIcon className="h-4 w-4" strokeWidth={2} aria-hidden="true" /> Online
+            </>
+          ) : (
+            <>
+              <MapPinIcon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />{' '}
+              {event.location?.venue || event.location?.city || 'Location to be confirmed'}
+            </>
+          )}
         </p>
 
         <p className="mt-1 text-xs text-ink-subtle">
@@ -101,7 +108,13 @@ export default function EventCard({ event, onPatch, showCommunity = true }) {
               onClick={() => setRsvp(event.myRsvp === 'going' ? null : 'going')}
               isLoading={isBusy}
             >
-              {event.myRsvp === 'going' ? <><CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> You're going</> : 'Going'}
+              {event.myRsvp === 'going' ? (
+                <>
+                  <CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> You're going
+                </>
+              ) : (
+                'Going'
+              )}
             </Button>
             <Button
               size="sm"
@@ -109,7 +122,13 @@ export default function EventCard({ event, onPatch, showCommunity = true }) {
               onClick={() => setRsvp(event.myRsvp === 'interested' ? null : 'interested')}
               disabled={isBusy}
             >
-              {event.myRsvp === 'interested' ? <><CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> Interested</> : 'Interested'}
+              {event.myRsvp === 'interested' ? (
+                <>
+                  <CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> Interested
+                </>
+              ) : (
+                'Interested'
+              )}
             </Button>
             <Button as={Link} to={`/events/${event._id}`} size="sm" variant="ghost">
               Details

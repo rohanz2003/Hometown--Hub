@@ -8,8 +8,10 @@ import { forwardRef } from 'react';
 import Spinner from './Spinner';
 
 const VARIANTS = {
-  primary: 'bg-primary-glow text-white hover:bg-primary-glow/90 active:bg-primary-glow/80 shadow-sm',
-  secondary: 'bg-secondary-glow text-white hover:bg-secondary-glow/90 active:bg-secondary-glow/80 shadow-sm',
+  primary:
+    'bg-primary-glow text-white hover:bg-primary-glow/90 active:bg-primary-glow/80 shadow-sm',
+  secondary:
+    'bg-secondary-glow text-white hover:bg-secondary-glow/90 active:bg-secondary-glow/80 shadow-sm',
   accent: 'bg-accent-glow text-white hover:bg-accent-glow/90 active:bg-accent-glow/80 shadow-sm',
   outline: 'border border-line bg-surface text-ink hover:bg-surface-hover active:bg-surface-muted',
   ghost: 'text-ink-muted hover:bg-surface-hover hover:text-ink active:bg-surface-muted',
@@ -43,7 +45,11 @@ const Button = forwardRef(function Button(
   ref,
 ) {
   const isDisabled = disabled || isLoading;
-  const loadingLabel = isLoading ? (typeof children === 'string' ? children : 'Loading') : undefined;
+  const loadingLabel = isLoading
+    ? typeof children === 'string'
+      ? children
+      : 'Loading'
+    : undefined;
 
   return (
     <Component

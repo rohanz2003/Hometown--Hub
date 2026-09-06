@@ -11,98 +11,98 @@
 @layer base {
   :root {
     /* Primary - Deep professional blue (trust, reliability) */
-    --color-primary: 15 23 42;           /* #0F172A - slate-900 */
-    --color-primary-hover: 30 41 59;     /* #1E293B - slate-800 */
-    --color-primary-soft: 226 232 240;   /* #E2E8F0 - slate-200 */
-    --color-primary-glow: 59 130 246;    /* #3B82F6 - blue-500 for glows/accents */
+    --color-primary: 15 23 42; /* #0F172A - slate-900 */
+    --color-primary-hover: 30 41 59; /* #1E293B - slate-800 */
+    --color-primary-soft: 226 232 240; /* #E2E8F0 - slate-200 */
+    --color-primary-glow: 59 130 246; /* #3B82F6 - blue-500 for glows/accents */
 
     /* Secondary - Refined emerald (growth, community) */
-    --color-secondary: 4 120 87;         /* #047857 - emerald-700 */
+    --color-secondary: 4 120 87; /* #047857 - emerald-700 */
     --color-secondary-soft: 209 250 229; /* #D1FAE5 - emerald-100 */
-    --color-secondary-glow: 16 185 129;  /* #10B981 - emerald-500 */
+    --color-secondary-glow: 16 185 129; /* #10B981 - emerald-500 */
 
     /* Accent - Warm amber (events, highlights, CTAs) */
-    --color-accent: 217 119 6;           /* #D97706 - amber-600 */
-    --color-accent-soft: 254 243 199;    /* #FEF3C7 - amber-100 */
-    --color-accent-glow: 245 158 11;     /* #F59E0B - amber-500 */
+    --color-accent: 217 119 6; /* #D97706 - amber-600 */
+    --color-accent-soft: 254 243 199; /* #FEF3C7 - amber-100 */
+    --color-accent-glow: 245 158 11; /* #F59E0B - amber-500 */
 
     /* Neutral canvas & surfaces */
-    --color-background: 248 250 252;     /* #F8FAFC - slate-50 */
-    --color-surface: 255 255 255;        /* #FFFFFF - white */
-    --color-surface-muted: 241 245 249;  /* #F1F5F9 - slate-100 */
-    --color-surface-hover: 226 232 240;  /* #E2E8F0 - slate-200 */
+    --color-background: 248 250 252; /* #F8FAFC - slate-50 */
+    --color-surface: 255 255 255; /* #FFFFFF - white */
+    --color-surface-muted: 241 245 249; /* #F1F5F9 - slate-100 */
+    --color-surface-hover: 226 232 240; /* #E2E8F0 - slate-200 */
 
     /* Text hierarchy */
-    --color-text: 15 23 42;              /* #0F172A - slate-900 */
-    --color-text-muted: 71 85 105;       /* #475569 - slate-600 */
-    --color-text-subtle: 148 163 184;    /* #94A3B8 - slate-400 */
-    --color-text-inverse: 255 255 255;   /* #FFFFFF - white */
+    --color-text: 15 23 42; /* #0F172A - slate-900 */
+    --color-text-muted: 71 85 105; /* #475569 - slate-600 */
+    --color-text-subtle: 148 163 184; /* #94A3B8 - slate-400 */
+    --color-text-inverse: 255 255 255; /* #FFFFFF - white */
 
     /* Borders */
-    --color-border: 226 232 240;         /* #E2E8F0 - slate-200 */
-    --color-border-strong: 203 213 225;  /* #CBD5E1 - slate-300 */
+    --color-border: 226 232 240; /* #E2E8F0 - slate-200 */
+    --color-border-strong: 203 213 225; /* #CBD5E1 - slate-300 */
 
     /* Semantic colors */
-    --color-success: 5 150 105;          /* #059669 - emerald-600 */
-    --color-success-soft: 209 250 229;   /* #D1FAE5 - emerald-100 */
-    --color-warning: 217 119 6;          /* #D97706 - amber-600 */
-    --color-warning-soft: 254 243 199;   /* #FEF3C7 - amber-100 */
-    --color-error: 220 38 38;            /* #DC2626 - red-600 */
-    --color-error-soft: 254 226 226;     /* #FEE2E2 - red-100 */
-    --color-error-glow: 239 68 68;       /* #EF4444 - red-500 */
+    --color-success: 5 150 105; /* #059669 - emerald-600 */
+    --color-success-soft: 209 250 229; /* #D1FAE5 - emerald-100 */
+    --color-warning: 217 119 6; /* #D97706 - amber-600 */
+    --color-warning-soft: 254 243 199; /* #FEF3C7 - amber-100 */
+    --color-error: 220 38 38; /* #DC2626 - red-600 */
+    --color-error-soft: 254 226 226; /* #FEE2E2 - red-100 */
+    --color-error-glow: 239 68 68; /* #EF4444 - red-500 */
 
     /* Chart series - colorblind safe */
-    --color-chart-1: 15 23 42;           /* slate-900 */
-    --color-chart-2: 217 119 6;          /* amber-600 */
-    --color-chart-grid: 226 232 240;     /* slate-200 */
+    --color-chart-1: 15 23 42; /* slate-900 */
+    --color-chart-2: 217 119 6; /* amber-600 */
+    --color-chart-grid: 226 232 240; /* slate-200 */
   }
 
   .dark {
     /* Primary - Bright professional blue for dark mode */
-    --color-primary: 248 250 252;        /* slate-50 */
-    --color-primary-hover: 226 232 240;  /* slate-200 */
-    --color-primary-soft: 30 41 59;      /* slate-800 */
-    --color-primary-glow: 96 165 250;    /* blue-400 */
+    --color-primary: 248 250 252; /* slate-50 */
+    --color-primary-hover: 226 232 240; /* slate-200 */
+    --color-primary-soft: 30 41 59; /* slate-800 */
+    --color-primary-glow: 96 165 250; /* blue-400 */
 
     /* Secondary - Bright emerald for dark mode */
-    --color-secondary: 110 231 183;      /* emerald-300 */
-    --color-secondary-soft: 6 78 59;     /* emerald-900 */
-    --color-secondary-glow: 34 197 94;   /* #22C55E - emerald-400 */
+    --color-secondary: 110 231 183; /* emerald-300 */
+    --color-secondary-soft: 6 78 59; /* emerald-900 */
+    --color-secondary-glow: 34 197 94; /* #22C55E - emerald-400 */
 
     /* Accent - Bright amber for dark mode */
-    --color-accent: 251 191 36;          /* amber-400 */
-    --color-accent-soft: 73 42 5;        /* amber-900 */
-    --color-accent-glow: 251 191 36;     /* #FBBF24 - amber-400 */
+    --color-accent: 251 191 36; /* amber-400 */
+    --color-accent-soft: 73 42 5; /* amber-900 */
+    --color-accent-glow: 251 191 36; /* #FBBF24 - amber-400 */
 
     /* Neutral canvas & surfaces */
-    --color-background: 2 6 23;          /* #020617 - slate-950 */
-    --color-surface: 15 23 42;           /* #0F172A - slate-900 */
-    --color-surface-muted: 30 41 59;     /* #1E293B - slate-800 */
-    --color-surface-hover: 51 65 85;     /* #334155 - slate-700 */
+    --color-background: 2 6 23; /* #020617 - slate-950 */
+    --color-surface: 15 23 42; /* #0F172A - slate-900 */
+    --color-surface-muted: 30 41 59; /* #1E293B - slate-800 */
+    --color-surface-hover: 51 65 85; /* #334155 - slate-700 */
 
     /* Text hierarchy */
-    --color-text: 248 250 252;           /* slate-50 */
-    --color-text-muted: 148 163 184;     /* slate-400 */
-    --color-text-subtle: 100 116 139;    /* slate-500 */
-    --color-text-inverse: 15 23 42;      /* slate-900 */
+    --color-text: 248 250 252; /* slate-50 */
+    --color-text-muted: 148 163 184; /* slate-400 */
+    --color-text-subtle: 100 116 139; /* slate-500 */
+    --color-text-inverse: 15 23 42; /* slate-900 */
 
     /* Borders */
-    --color-border: 51 65 85;            /* slate-700 */
-    --color-border-strong: 71 85 105;    /* slate-600 */
+    --color-border: 51 65 85; /* slate-700 */
+    --color-border-strong: 71 85 105; /* slate-600 */
 
     /* Semantic colors */
-    --color-success: 16 185 129;         /* emerald-500 */
-    --color-success-soft: 6 78 59;       /* emerald-900 */
-    --color-warning: 251 191 36;         /* amber-400 */
-    --color-warning-soft: 73 42 5;       /* amber-900 */
-    --color-error: 248 113 113;          /* red-400 */
-    --color-error-soft: 127 29 29;       /* red-900 */
-    --color-error-glow: 248 113 113;     /* #F87171 - red-400 */
+    --color-success: 16 185 129; /* emerald-500 */
+    --color-success-soft: 6 78 59; /* emerald-900 */
+    --color-warning: 251 191 36; /* amber-400 */
+    --color-warning-soft: 73 42 5; /* amber-900 */
+    --color-error: 248 113 113; /* red-400 */
+    --color-error-soft: 127 29 29; /* red-900 */
+    --color-error-glow: 248 113 113; /* #F87171 - red-400 */
 
     /* Chart series - re-stepped for dark surface */
-    --color-chart-1: 148 163 184;        /* slate-400 */
-    --color-chart-2: 251 191 36;         /* amber-400 */
-    --color-chart-grid: 51 65 85;        /* slate-700 */
+    --color-chart-1: 148 163 184; /* slate-400 */
+    --color-chart-2: 251 191 36; /* amber-400 */
+    --color-chart-grid: 51 65 85; /* slate-700 */
   }
 
   html {
@@ -113,7 +113,10 @@
     @apply bg-[rgb(var(--color-background))] font-sans text-base text-[rgb(var(--color-text))] antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-semibold tracking-[-0.02em] text-[rgb(var(--color-text))];
   }
 

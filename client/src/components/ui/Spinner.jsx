@@ -9,7 +9,12 @@ const SIZES = {
   xl: 'h-12 w-12 border-3',
 };
 
-export default function Spinner({ size = 'md', className = '', label = 'Loading', color = 'primary' }) {
+export default function Spinner({
+  size = 'md',
+  className = '',
+  label = 'Loading',
+  color = 'primary',
+}) {
   const colorClasses = {
     primary: 'border-primary border-t-transparent',
     secondary: 'border-secondary border-t-transparent',
@@ -68,7 +73,12 @@ export function SkeletonText({ lines = 3, className = '', lineHeight = 'h-4' }) 
   return (
     <div className={`space-y-2 ${className}`}>
       {Array.from({ length: lines }, (_, i) => (
-        <Skeleton key={i} variant="text" className={lineHeight} width={i === lines - 1 ? '60%' : '100%'} />
+        <Skeleton
+          key={i}
+          variant="text"
+          className={lineHeight}
+          width={i === lines - 1 ? '60%' : '100%'}
+        />
       ))}
     </div>
   );

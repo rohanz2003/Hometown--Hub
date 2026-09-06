@@ -126,7 +126,11 @@ export default function PostCard({
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5">
-          {post.isPinned && <Badge tone="primary"><PinIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Pinned</Badge>}
+          {post.isPinned && (
+            <Badge tone="primary">
+              <PinIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Pinned
+            </Badge>
+          )}
           {post.type && post.type !== 'discussion' && (
             <Badge tone={POST_TYPE_TONE[post.type] || 'muted'}>{POST_TYPE_LABELS[post.type]}</Badge>
           )}

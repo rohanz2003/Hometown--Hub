@@ -37,7 +37,11 @@ const PROBLEMS = [
 ];
 
 const FEATURES = [
-  { icon: CommunityIcon, title: 'One community per place', body: 'A single home for your city or village.' },
+  {
+    icon: CommunityIcon,
+    title: 'One community per place',
+    body: 'A single home for your city or village.',
+  },
   {
     icon: NewsIcon,
     title: 'Structured updates',
@@ -83,7 +87,11 @@ export default function LandingPage() {
               onClick={toggleTheme}
               aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             >
-              {isDark ? <LightThemeIcon className="h-5 w-5" strokeWidth={2} /> : <DarkThemeIcon className="h-5 w-5" strokeWidth={2} />}
+              {isDark ? (
+                <LightThemeIcon className="h-5 w-5" strokeWidth={2} />
+              ) : (
+                <DarkThemeIcon className="h-5 w-5" strokeWidth={2} />
+              )}
             </Button>
             <Button as={Link} to="/login" variant="ghost" size="sm">
               Sign in
@@ -155,7 +163,9 @@ export default function LandingPage() {
 
         <section className="border-t border-line bg-primary py-14 text-center text-white dark:bg-slate-900 dark:text-white">
           <div className="mx-auto max-w-3xl px-4">
-            <h2 className="text-2xl font-bold text-white dark:text-primary">Start your hometown&apos;s community</h2>
+            <h2 className="text-2xl font-bold text-white dark:text-primary">
+              Start your hometown&apos;s community
+            </h2>
             <p className="mt-2 text-white/85 dark:text-ink-muted">
               Create it in a minute. A platform admin reviews new communities before they go live,
               so the directory stays trustworthy.

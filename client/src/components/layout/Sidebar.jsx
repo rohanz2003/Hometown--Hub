@@ -8,10 +8,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { NAV_ITEMS, ADMIN_NAV_ITEMS } from './navItems';
-import {
-  CollapseIcon,
-  ExpandIcon,
-} from './navIcons';
+import { CollapseIcon, ExpandIcon } from './navIcons';
 
 export default function Sidebar({ unreadCount = 0 }) {
   const { isPlatformAdmin } = useAuth();
@@ -78,7 +75,11 @@ export default function Sidebar({ unreadCount = 0 }) {
           aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           className="mt-auto flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-ink-subtle transition-colors hover:bg-surface-hover hover:text-ink"
         >
-          {sidebarCollapsed ? <ExpandIcon className="h-5 w-5" strokeWidth={2} /> : <CollapseIcon className="h-5 w-5" strokeWidth={2} />}
+          {sidebarCollapsed ? (
+            <ExpandIcon className="h-5 w-5" strokeWidth={2} />
+          ) : (
+            <CollapseIcon className="h-5 w-5" strokeWidth={2} />
+          )}
           {!sidebarCollapsed && <span>Collapse</span>}
         </button>
       </nav>

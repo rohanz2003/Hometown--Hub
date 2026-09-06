@@ -5,12 +5,24 @@
  * sits beside the form.
  */
 import { Link, Outlet } from 'react-router-dom';
-import { FeedIcon as NewsIcon, EventsIcon, SparklesIcon as CultureIcon } from '../../components/ui/icons';
+import {
+  FeedIcon as NewsIcon,
+  EventsIcon,
+  SparklesIcon as CultureIcon,
+} from '../../components/ui/icons';
 
 const HIGHLIGHTS = [
   { icon: NewsIcon, title: 'One place for local news', body: 'No more scattered group chats.' },
-  { icon: EventsIcon, title: 'Organise real gatherings', body: 'Create events and see who is coming.' },
-  { icon: CultureIcon, title: 'Keep traditions alive', body: 'Share the stories and photos that matter.' },
+  {
+    icon: EventsIcon,
+    title: 'Organise real gatherings',
+    body: 'Create events and see who is coming.',
+  },
+  {
+    icon: CultureIcon,
+    title: 'Keep traditions alive',
+    body: 'Share the stories and photos that matter.',
+  },
 ];
 
 export default function AuthLayout() {

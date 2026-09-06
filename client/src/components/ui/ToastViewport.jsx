@@ -47,7 +47,11 @@ export default function ToastViewport() {
               TONES[toast.tone] || TONES.info
             }`}
           >
-            <Icon className={`mt-0.5 h-5 w-5 flex-shrink-0 ${iconColor}`} strokeWidth={2} aria-hidden="true" />
+            <Icon
+              className={`mt-0.5 h-5 w-5 flex-shrink-0 ${iconColor}`}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
             <div className="min-w-0 flex-1">
               {toast.title && <p className="text-sm font-semibold text-ink">{toast.title}</p>}
               <p className="text-sm text-ink-muted">{toast.message}</p>

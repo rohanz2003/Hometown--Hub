@@ -30,7 +30,13 @@ import * as eventService from '../services/eventService';
 import * as postService from '../services/postService';
 import { formatCount, formatLocation, mediaUrl } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS, COMMUNITY_STATUS_LABELS } from '../utils/constants';
-import { CommunityIcon as BuildingIcon, PrivateIcon as LockIcon, MapPinIcon, FeedIcon as NewspaperIcon, EventsIcon as CalendarIcon } from '../components/ui/icons';
+import {
+  CommunityIcon as BuildingIcon,
+  PrivateIcon as LockIcon,
+  MapPinIcon,
+  FeedIcon as NewspaperIcon,
+  EventsIcon as CalendarIcon,
+} from '../components/ui/icons';
 
 export default function CommunityDetailPage() {
   const { communityId } = useParams();
@@ -123,15 +129,23 @@ export default function CommunityDetailPage() {
                     {COMMUNITY_STATUS_LABELS[data.status]}
                   </Badge>
                 )}
-                {data.visibility === 'private' && <Badge><LockIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Private</Badge>}
+                {data.visibility === 'private' && (
+                  <Badge>
+                    <LockIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Private
+                  </Badge>
+                )}
                 {data.myRole && data.myRole !== 'member' && (
                   <Badge tone="primary">{COMMUNITY_ROLE_LABELS[data.myRole]}</Badge>
                 )}
               </div>
               <p className="mt-1 text-sm text-ink-subtle">
-              <MapPinIcon className="inline h-3.5 w-3.5 mr-1" strokeWidth={2} aria-hidden="true" />
-              {formatLocation(data.location)}
-            </p>
+                <MapPinIcon
+                  className="inline h-3.5 w-3.5 mr-1"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                {formatLocation(data.location)}
+              </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">

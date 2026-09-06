@@ -44,7 +44,11 @@ export default {
         'line-strong': withAlpha('--color-border-strong'),
         success: { DEFAULT: withAlpha('--color-success'), soft: withAlpha('--color-success-soft') },
         warning: { DEFAULT: withAlpha('--color-warning'), soft: withAlpha('--color-warning-soft') },
-        error: { DEFAULT: withAlpha('--color-error'), soft: withAlpha('--color-error-soft'), glow: withAlpha('--color-error-glow') },
+        error: {
+          DEFAULT: withAlpha('--color-error'),
+          soft: withAlpha('--color-error-soft'),
+          glow: withAlpha('--color-error-glow'),
+        },
         chart: {
           1: withAlpha('--color-chart-1'),
           2: withAlpha('--color-chart-2'),
@@ -52,8 +56,30 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        display: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: [
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
+        display: [
+          'Inter',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
       },
       fontSize: {
         // Mobile-first type scale with improved hierarchy
@@ -74,15 +100,15 @@ export default {
         bold: '700',
       },
       borderRadius: {
-        card: '0.75rem',      // 12px
-        'card-lg': '1rem',    // 16px
-        input: '0.625rem',    // 10px
-        button: '0.5rem',     // 8px
+        card: '0.75rem', // 12px
+        'card-lg': '1rem', // 16px
+        input: '0.625rem', // 10px
+        button: '0.5rem', // 8px
       },
       spacing: {
-        '18': '4.5rem',  // 72px
-        '22': '5.5rem',  // 88px
-        '30': '7.5rem',  // 120px
+        18: '4.5rem', // 72px
+        22: '5.5rem', // 88px
+        30: '7.5rem', // 120px
       },
       boxShadow: {
         card: '0 1px 2px 0 rgb(15 23 42 / 0.03), 0 1px 3px 1px rgb(15 23 42 / 0.05)',
@@ -107,7 +133,7 @@ export default {
           from: { opacity: '0', transform: 'scale(0.95)' },
           to: { opacity: '1', transform: 'scale(1)' },
         },
-        'shimmer': {
+        shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
@@ -117,15 +143,15 @@ export default {
         'slide-up': 'slide-up 180ms ease-out',
         'slide-down': 'slide-down 180ms ease-out',
         'scale-in': 'scale-in 150ms ease-out',
-        'shimmer': 'shimmer 2s infinite linear',
+        shimmer: 'shimmer 2s infinite linear',
       },
       transitionDuration: {
-        '0': '0ms',
-        '75': '75ms',
-        '150': '150ms',
-        '200': '200ms',
-        '300': '300ms',
-        '500': '500ms',
+        0: '0ms',
+        75: '75ms',
+        150: '150ms',
+        200: '200ms',
+        300: '300ms',
+        500: '500ms',
       },
       transitionTimingFunction: {
         'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',

@@ -111,7 +111,9 @@ export default function CommunityCard({ community, onPatch, view = 'list' }) {
           </Button>
 
           {isMember ? (
-            <Badge tone="success"><CheckIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Joined</Badge>
+            <Badge tone="success">
+              <CheckIcon className="h-3 w-3 mr-1" strokeWidth={2} /> Joined
+            </Badge>
           ) : isPending ? (
             <Badge tone="warning">Awaiting approval</Badge>
           ) : (

@@ -52,7 +52,11 @@ export default function Navbar({ unreadCount = 0 }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80">
       <div className="flex h-14 items-center gap-2 px-3 sm:gap-4 sm:px-4">
-        <Link to="/dashboard" className="flex shrink-0 items-center gap-2" aria-label="Hometown Hub Home">
+        <Link
+          to="/dashboard"
+          className="flex shrink-0 items-center gap-2"
+          aria-label="Hometown Hub Home"
+        >
           <span
             aria-hidden="true"
             className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-white"
@@ -91,7 +95,11 @@ export default function Navbar({ unreadCount = 0 }) {
             aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
             className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-ink-muted transition-colors hover:bg-surface-hover hover:text-ink"
           >
-            {isDark ? <LightThemeIcon className="h-5 w-5" strokeWidth={2} /> : <DarkThemeIcon className="h-5 w-5" strokeWidth={2} />}
+            {isDark ? (
+              <LightThemeIcon className="h-5 w-5" strokeWidth={2} />
+            ) : (
+              <DarkThemeIcon className="h-5 w-5" strokeWidth={2} />
+            )}
           </button>
 
           <Link

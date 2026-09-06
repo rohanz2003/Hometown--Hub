@@ -100,7 +100,12 @@ function Overview() {
           accent="secondary"
           hint="Signed in within 7 days"
         />
-        <StatCard label="Live communities" value={data.communities} icon={BuildingIcon} accent="accent" />
+        <StatCard
+          label="Live communities"
+          value={data.communities}
+          icon={BuildingIcon}
+          accent="accent"
+        />
         <StatCard
           label="Awaiting review"
           value={data.pendingCommunities}
@@ -112,7 +117,12 @@ function Overview() {
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatCard label="Posts" value={data.posts} icon={FileTextIcon} />
-        <StatCard label="Comments" value={data.comments} icon={MessageSquareIcon} accent="secondary" />
+        <StatCard
+          label="Comments"
+          value={data.comments}
+          icon={MessageSquareIcon}
+          accent="secondary"
+        />
         <StatCard label="Events" value={data.events} icon={CalendarIcon} accent="accent" />
         <StatCard
           label="Open reports"

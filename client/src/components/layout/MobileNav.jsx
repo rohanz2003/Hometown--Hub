@@ -29,11 +29,7 @@ export default function MobileNav() {
                   ].join(' ')
                 }
               >
-                <Icon
-                  aria-hidden="true"
-                  className="h-6 w-6 leading-none"
-                  strokeWidth={2.5}
-                />
+                <Icon aria-hidden="true" className="h-6 w-6 leading-none" strokeWidth={2.5} />
                 {item.label}
               </NavLink>
             </li>

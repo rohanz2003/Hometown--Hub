@@ -96,7 +96,12 @@ export default function PostActions({
         label="View comments"
         count={post.commentCount}
       />
-      <ActionButton Icon={ShareIcon} label="Share this post" count={post.shareCount} onClick={onShare} />
+      <ActionButton
+        Icon={ShareIcon}
+        label="Share this post"
+        count={post.shareCount}
+        onClick={onShare}
+      />
 
       <div ref={menuRef} className="relative ml-auto">
         <button
@@ -139,7 +144,11 @@ export default function PostActions({
                   }}
                   className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink-muted hover:bg-surface-muted hover:text-ink"
                 >
-                  {post.isPinned ? <PinOffIcon className="h-5 w-5" strokeWidth={2} /> : <PinIcon className="h-5 w-5" strokeWidth={2} />}
+                  {post.isPinned ? (
+                    <PinOffIcon className="h-5 w-5" strokeWidth={2} />
+                  ) : (
+                    <PinIcon className="h-5 w-5" strokeWidth={2} />
+                  )}
                   {post.isPinned ? 'Unpin post' : 'Pin post'}
                 </button>
                 <button
