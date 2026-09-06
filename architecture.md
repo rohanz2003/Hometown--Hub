@@ -70,20 +70,21 @@ hometown-hub/
 
 ## 3. Tech Stack
 
-| Layer           | Choice                                                 |
-| --------------- | ------------------------------------------------------ |
-| Frontend        | React.js + Vite, Tailwind CSS                          |
-| Backend         | Node.js, Express.js                                    |
-| Database        | MongoDB (document-flexible)                            |
+| Layer           | Choice                                                                  |
+| --------------- | ----------------------------------------------------------------------- |
+| Frontend        | React.js + Vite, Tailwind CSS                                           |
+| Backend         | Node.js, Express.js                                                     |
+| Database        | MongoDB (document-flexible)                                             |
 | Auth            | JWT-based sessions (access token in memory, refresh in httpOnly cookie) |
-| API             | REST                                                   |
-| Icons           | Lucide React (tree-shakable SVG icons)                 |
-| Deployment      | Vercel (frontend), Render (backend)                    |
-| Version control | Git + GitHub                                           |
+| API             | REST                                                                    |
+| Icons           | Lucide React (tree-shakable SVG icons)                                  |
+| Deployment      | Vercel (frontend), Render (backend)                                     |
+| Version control | Git + GitHub                                                            |
 
 ## 4. Frontend Design System
 
 Centralized design tokens live in:
+
 - `client/src/styles/index.css` — CSS variables for colors, spacing, shadows
 - `client/tailwind.config.js` — Tailwind theme extension mapping tokens to utilities
 - `client/src/components/ui/icons.js` — Tree-shakable Lucide React icon exports

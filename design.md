@@ -16,51 +16,51 @@ UI/UX guidelines and visual design system for the application.
 
 ### Light Mode
 
-| Role          | Color                    | Hex       | Purpose                    |
-| ------------- | ------------------------ | --------- | -------------------------- |
-| Primary       | Slate 900                | `#0F172A` | Trust, reliability         |
-| Primary Hover | Slate 800                | `#1E293B` | Interactive states         |
-| Primary Soft  | Slate 200                | `#E2E8F0` | Subtle backgrounds         |
-| Primary Glow  | Blue 500                 | `#3B82F6` | Buttons, focus rings, CTAs |
-| Secondary     | Emerald 700              | `#047857` | Community, growth          |
-| Secondary Glow| Emerald 500              | `#10B981` | Secondary buttons          |
-| Accent        | Amber 600                | `#D97706` | Events, highlights         |
-| Accent Glow   | Amber 500                | `#F59E0B` | Accent buttons             |
-| Background    | Slate 50                 | `#F8FAFC` | Page background            |
-| Surface       | White                    | `#FFFFFF` | Cards, panels              |
-| Surface Muted | Slate 100                | `#F1F5F9` | Subtle surfaces            |
-| Text          | Slate 900                | `#0F172A` | Primary text               |
-| Text Muted    | Slate 600                | `#475569` | Secondary text             |
-| Text Subtle   | Slate 400                | `#94A3B8` | Placeholders, captions     |
-| Border        | Slate 200                | `#E2E8F0` | Dividers, inputs           |
-| Success       | Emerald 600              | `#059669` | Success states             |
-| Warning       | Amber 600                | `#D97706` | Warning states             |
-| Error         | Red 600                  | `#DC2626` | Error states               |
-| Error Glow    | Red 500                  | `#EF4444` | Error buttons              |
+| Role           | Color       | Hex       | Purpose                    |
+| -------------- | ----------- | --------- | -------------------------- |
+| Primary        | Slate 900   | `#0F172A` | Trust, reliability         |
+| Primary Hover  | Slate 800   | `#1E293B` | Interactive states         |
+| Primary Soft   | Slate 200   | `#E2E8F0` | Subtle backgrounds         |
+| Primary Glow   | Blue 500    | `#3B82F6` | Buttons, focus rings, CTAs |
+| Secondary      | Emerald 700 | `#047857` | Community, growth          |
+| Secondary Glow | Emerald 500 | `#10B981` | Secondary buttons          |
+| Accent         | Amber 600   | `#D97706` | Events, highlights         |
+| Accent Glow    | Amber 500   | `#F59E0B` | Accent buttons             |
+| Background     | Slate 50    | `#F8FAFC` | Page background            |
+| Surface        | White       | `#FFFFFF` | Cards, panels              |
+| Surface Muted  | Slate 100   | `#F1F5F9` | Subtle surfaces            |
+| Text           | Slate 900   | `#0F172A` | Primary text               |
+| Text Muted     | Slate 600   | `#475569` | Secondary text             |
+| Text Subtle    | Slate 400   | `#94A3B8` | Placeholders, captions     |
+| Border         | Slate 200   | `#E2E8F0` | Dividers, inputs           |
+| Success        | Emerald 600 | `#059669` | Success states             |
+| Warning        | Amber 600   | `#D97706` | Warning states             |
+| Error          | Red 600     | `#DC2626` | Error states               |
+| Error Glow     | Red 500     | `#EF4444` | Error buttons              |
 
 ### Dark Mode
 
-| Role          | Color                    | Hex       | Purpose                    |
-| ------------- | ------------------------ | --------- | -------------------------- |
-| Primary       | Slate 50                 | `#F8FAFC` | Inverted primary           |
-| Primary Hover | Slate 200                | `#E2E8F0` | Interactive states         |
-| Primary Soft  | Slate 800                | `#1E293B` | Subtle backgrounds         |
-| Primary Glow  | Blue 400                 | `#60A5FA` | Buttons, focus rings, CTAs |
-| Secondary     | Emerald 300              | `#6EE7B7` | Community, growth          |
-| Secondary Glow| Emerald 400              | `#34D399` | Secondary buttons          |
-| Accent        | Amber 400                | `#FBBF24` | Events, highlights         |
-| Accent Glow   | Amber 400                | `#FBBF24` | Accent buttons             |
-| Background    | Slate 950                | `#020617` | Page background            |
-| Surface       | Slate 900                | `#0F172A` | Cards, panels              |
-| Surface Muted | Slate 800                | `#1E293B` | Subtle surfaces            |
-| Text          | Slate 50                 | `#F8FAFC` | Primary text               |
-| Text Muted    | Slate 400                | `#94A3B8` | Secondary text             |
-| Text Subtle   | Slate 500                | `#64748B` | Placeholders, captions     |
-| Border        | Slate 700                | `#334155` | Dividers, inputs           |
-| Success       | Emerald 500              | `#10B981` | Success states             |
-| Warning       | Amber 400                | `#FBBF24` | Warning states             |
-| Error         | Red 400                  | `#F87171` | Error states               |
-| Error Glow    | Red 400                  | `#F87171` | Error buttons              |
+| Role           | Color       | Hex       | Purpose                    |
+| -------------- | ----------- | --------- | -------------------------- |
+| Primary        | Slate 50    | `#F8FAFC` | Inverted primary           |
+| Primary Hover  | Slate 200   | `#E2E8F0` | Interactive states         |
+| Primary Soft   | Slate 800   | `#1E293B` | Subtle backgrounds         |
+| Primary Glow   | Blue 400    | `#60A5FA` | Buttons, focus rings, CTAs |
+| Secondary      | Emerald 300 | `#6EE7B7` | Community, growth          |
+| Secondary Glow | Emerald 400 | `#34D399` | Secondary buttons          |
+| Accent         | Amber 400   | `#FBBF24` | Events, highlights         |
+| Accent Glow    | Amber 400   | `#FBBF24` | Accent buttons             |
+| Background     | Slate 950   | `#020617` | Page background            |
+| Surface        | Slate 900   | `#0F172A` | Cards, panels              |
+| Surface Muted  | Slate 800   | `#1E293B` | Subtle surfaces            |
+| Text           | Slate 50    | `#F8FAFC` | Primary text               |
+| Text Muted     | Slate 400   | `#94A3B8` | Secondary text             |
+| Text Subtle    | Slate 500   | `#64748B` | Placeholders, captions     |
+| Border         | Slate 700   | `#334155` | Dividers, inputs           |
+| Success        | Emerald 500 | `#10B981` | Success states             |
+| Warning        | Amber 400   | `#FBBF24` | Warning states             |
+| Error          | Red 400     | `#F87171` | Error states               |
+| Error Glow     | Red 400     | `#F87171` | Error buttons              |
 
 **Key principle:** Button variants use `*glow` colors (primary-glow, secondary-glow, accent-glow, error-glow) which are carefully chosen to maintain white text contrast in BOTH light and dark modes. This prevents the "invisible text in dark mode" bug.
 
@@ -78,17 +78,17 @@ Support both light and dark theme using CSS variables / Tailwind's dark mode (`.
 
 ### Type Scale (mobile-first)
 
-| Size  | Rem     | Line Height | Use Case              |
-| ----- | ------- | ----------- | --------------------- |
-| 2xs   | 0.625   | 1.4         | Captions, labels      |
-| xs    | 0.75    | 1.5         | Small text            |
-| sm    | 0.8125  | 1.5         | Secondary text        |
-| base  | 0.9375  | 1.6         | Body text             |
-| lg    | 1.0625  | 1.5         | Large body            |
-| xl    | 1.25    | 1.4         | Small headings        |
-| 2xl   | 1.5     | 1.3         | Medium headings       |
-| 3xl   | 1.875   | 1.2         | Large headings        |
-| 4xl   | 2.25    | 1.15        | Hero headings         |
+| Size | Rem    | Line Height | Use Case         |
+| ---- | ------ | ----------- | ---------------- |
+| 2xs  | 0.625  | 1.4         | Captions, labels |
+| xs   | 0.75   | 1.5         | Small text       |
+| sm   | 0.8125 | 1.5         | Secondary text   |
+| base | 0.9375 | 1.6         | Body text        |
+| lg   | 1.0625 | 1.5         | Large body       |
+| xl   | 1.25   | 1.4         | Small headings   |
+| 2xl  | 1.5    | 1.3         | Medium headings  |
+| 3xl  | 1.875  | 1.2         | Large headings   |
+| 4xl  | 2.25   | 1.15        | Hero headings    |
 
 ## 4. Icons
 
@@ -100,7 +100,9 @@ Support both light and dark theme using CSS variables / Tailwind's dark mode (`.
 ## 5. Components
 
 ### Buttons
+
 Use `*glow` color variants for consistent white-text contrast in both modes:
+
 - Primary: `bg-primary-glow text-white`
 - Secondary: `bg-secondary-glow text-white`
 - Accent: `bg-accent-glow text-white`
@@ -108,10 +110,12 @@ Use `*glow` color variants for consistent white-text contrast in both modes:
 - Outline/Ghost/Soft: adapt to surface colors
 
 ### Cards
+
 - Base: `hh-card` — subtle shadow, border, rounded-xl
 - Elevated: `hh-card-elevated` — larger shadow for modals/dropdowns
 
 ### Spacing & Radius
+
 - Card radius: 12px (rounded-xl)
 - Input radius: 10px (rounded-lg)
 - Button radius: 8px (rounded-lg)
