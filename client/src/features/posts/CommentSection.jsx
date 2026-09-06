@@ -18,11 +18,7 @@ import useAsync from '../../hooks/useAsync';
 import * as postService from '../../services/postService';
 import { formatRelative } from '../../utils/format';
 import { commentSchema } from '../../utils/validators';
-import {
-  LikeIcon as HeartIcon,
-  UnlikeIcon as HeartOffIcon,
-  CommentIcon,
-} from '../../components/ui/icons';
+import { LikeIcon as HeartIcon, UnlikeIcon as HeartOffIcon } from '../../components/ui/icons';
 
 export default function CommentSection({ post, canComment, canModerate, onCountChange }) {
   const toast = useToast();

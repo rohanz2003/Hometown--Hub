@@ -22,7 +22,6 @@ import usePaginatedList from '../hooks/usePaginatedList';
 import { useTheme } from '../context/ThemeContext';
 import * as communityService from '../services/communityService';
 import { SORT_OPTIONS } from '../utils/constants';
-import { SearchIcon, Building2Icon as BuildingIcon } from '../components/ui/icons';
 
 export default function CommunitiesPage() {
   const [params, setParams] = useSearchParams();

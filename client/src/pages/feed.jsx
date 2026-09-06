@@ -22,7 +22,6 @@ import * as communityService from '../services/communityService';
 import * as dashboardService from '../services/dashboardService';
 import * as postService from '../services/postService';
 import { POST_TYPES, SORT_OPTIONS } from '../utils/constants';
-import { Building2Icon as BuildingIcon, FeedIcon as NewspaperIcon } from '../components/ui/icons';
 
 export default function FeedPage() {
   const { feedView, setFeedView } = useTheme();

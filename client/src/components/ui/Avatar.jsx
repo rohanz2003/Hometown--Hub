@@ -97,7 +97,7 @@ export function AvatarGroup({ children, max = 4, size = 'md', className = '', ..
   return (
     <div className={`flex -space-x-2 ${className}`} {...props}>
       {visible.map((child, index) => (
-        <span key={index} className="relative z-[auto]">
+        <span key={child?.key ?? child?.props?.key ?? index} className="relative z-[auto]">
           {child}
         </span>
       ))}

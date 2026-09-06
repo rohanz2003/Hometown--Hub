@@ -19,7 +19,6 @@ import usePaginatedList from '../../hooks/usePaginatedList';
 import * as communityService from '../../services/communityService';
 import { formatRelative } from '../../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../../utils/constants';
-import { MailIcon, MembersIcon as UsersIcon } from '../../components/ui/icons';
 
 const ROLE_OPTIONS = [
   { value: 'member', label: 'Member' },

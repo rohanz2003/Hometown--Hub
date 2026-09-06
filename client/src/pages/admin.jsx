@@ -27,16 +27,13 @@ import { formatDate, formatLocation, formatRelative } from '../utils/format';
 import { COMMUNITY_STATUS_LABELS } from '../utils/constants';
 import {
   MembersIcon as UsersIcon,
-  ZapIcon as ZapIcon,
+  ZapIcon,
   CommunityIcon as BuildingIcon,
   TimeIcon as ClockIcon,
   PostIcon as FileTextIcon,
   CommentIcon as MessageSquareIcon,
   EventsIcon as CalendarIcon,
   ReportIcon as FlagIcon,
-  SuccessIcon as CheckCircleIcon,
-  WarningIcon as AlertTriangleIcon,
-  TagIcon,
 } from '../components/ui/icons';
 
 export default function AdminPage() {

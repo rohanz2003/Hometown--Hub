@@ -5,11 +5,7 @@
  * sits beside the form.
  */
 import { Link, Outlet } from 'react-router-dom';
-import {
-  FeedIcon as NewsIcon,
-  EventsIcon,
-  SparklesIcon as CultureIcon,
-} from '../../components/ui/icons';
+import { FeedIcon as NewsIcon, EventsIcon, SparklesIcon as CultureIcon } from '../ui/icons';
 
 const HIGHLIGHTS = [
   { icon: NewsIcon, title: 'One place for local news', body: 'No more scattered group chats.' },

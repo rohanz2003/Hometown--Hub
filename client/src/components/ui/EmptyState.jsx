@@ -4,7 +4,6 @@
  * An empty list always explains itself and offers the next action, rather than
  * leaving a blank panel.
  */
-import Button from './Button';
 import {
   Users,
   Search,
@@ -16,7 +15,9 @@ import {
   User,
   Settings,
   BarChart2,
+  AlertTriangle,
 } from 'lucide-react';
+import Button from './Button';
 
 const ICON_MAP = {
   users: Users,
@@ -29,6 +30,7 @@ const ICON_MAP = {
   user: User,
   settings: Settings,
   chart: BarChart2,
+  alert: AlertTriangle,
 };
 
 export default function EmptyState({

@@ -110,7 +110,7 @@ export default function EventCard({ event, onPatch, showCommunity = true }) {
             >
               {event.myRsvp === 'going' ? (
                 <>
-                  <CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> You're going
+                  <CheckIcon className="h-4 w-4 mr-1" strokeWidth={2} /> You&apos;re going
                 </>
               ) : (
                 'Going'

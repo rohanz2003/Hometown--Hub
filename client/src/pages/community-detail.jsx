@@ -34,8 +34,6 @@ import {
   CommunityIcon as BuildingIcon,
   PrivateIcon as LockIcon,
   MapPinIcon,
-  FeedIcon as NewspaperIcon,
-  EventsIcon as CalendarIcon,
 } from '../components/ui/icons';
 
 export default function CommunityDetailPage() {

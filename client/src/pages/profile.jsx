@@ -21,7 +21,6 @@ import { formatDate, formatLocation } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../utils/constants';
 import { profileSchema } from '../utils/validators';
 import {
-  CommunityIcon as BuildingIcon,
   ModerationIcon as ShieldIcon,
   MapPinIcon,
   MembersIcon as UsersIcon,

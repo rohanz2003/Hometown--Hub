@@ -16,7 +16,7 @@ import { useAuth } from '../context/AuthContext';
 import useAsync from '../hooks/useAsync';
 import * as dashboardService from '../services/dashboardService';
 import { formatEventWindow, formatLocation, formatRelative } from '../utils/format';
-import { COMMUNITY_ROLE_LABELS, NOTIFICATION_ICONS } from '../utils/constants';
+import { COMMUNITY_ROLE_LABELS } from '../utils/constants';
 import {
   CommunityIcon as BuildingIcon,
   EventsIcon as CalendarIcon,

@@ -14,7 +14,6 @@ import EventCard from '../features/events/EventCard';
 import useDebounce from '../hooks/useDebounce';
 import usePaginatedList from '../hooks/usePaginatedList';
 import * as eventService from '../services/eventService';
-import { CalendarIcon } from '../components/ui/icons';
 
 const WHEN_TABS = [
   { value: 'upcoming', label: 'Upcoming' },
