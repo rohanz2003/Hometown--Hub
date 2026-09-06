@@ -7,10 +7,10 @@ High-level design and structure of the application.
 Hometown Hub follows a **client-server, REST-based architecture**:
 
 ```
-[ React/Next.js Frontend ]  <--- REST API (JSON) --->  [ Express.js Backend ]  <--->  [ MongoDB / PostgreSQL ]
+[ React/Vite Frontend ]  <--- REST API (JSON) --->  [ Express.js Backend ]  <--->  [ MongoDB ]
         |                                                        |
    Tailwind UI                                          Auth (JWT) + Business Logic
-   State: Context/Redux                                 REST controllers per entity
+   State: Context                                         REST controllers per entity
 ```
 
 **Components**
@@ -37,9 +37,11 @@ Hometown Hub follows a **client-server, REST-based architecture**:
 
 ```
 hometown-hub/
-├── client/                        # React/Next.js frontend
+├── client/                        # React/Vite frontend
 │   ├── src/
 │   │   ├── components/            # Reusable UI (Card, Button, Modal, Navbar)
+│   │   │   ├── layout/            # AppLayout, AuthLayout, Navbar, Sidebar, MobileNav
+│   │   │   └── ui/                # Atomic UI (Button, Card, Modal, Avatar, Badge, etc.)
 │   │   ├── pages/                 # Route-level views (Feed, Events, Profile, Admin)
 │   │   ├── features/              # Feature-sliced logic (auth, communities, posts, events)
 │   │   ├── hooks/                 # Custom React hooks
@@ -70,10 +72,20 @@ hometown-hub/
 
 | Layer           | Choice                                                 |
 | --------------- | ------------------------------------------------------ |
-| Frontend        | React.js / Next.js, Tailwind CSS or Bootstrap          |
+| Frontend        | React.js + Vite, Tailwind CSS                          |
 | Backend         | Node.js, Express.js                                    |
-| Database        | MongoDB (document-flexible) or PostgreSQL (relational) |
-| Auth            | JWT-based sessions                                     |
+| Database        | MongoDB (document-flexible)                            |
+| Auth            | JWT-based sessions (access token in memory, refresh in httpOnly cookie) |
 | API             | REST                                                   |
-| Deployment      | Vercel/Netlify (frontend), AWS/Render (backend)        |
+| Icons           | Lucide React (tree-shakable SVG icons)                 |
+| Deployment      | Vercel (frontend), Render (backend)                    |
 | Version control | Git + GitHub                                           |
+
+## 4. Frontend Design System
+
+Centralized design tokens live in:
+- `client/src/styles/index.css` — CSS variables for colors, spacing, shadows
+- `client/tailwind.config.js` — Tailwind theme extension mapping tokens to utilities
+- `client/src/components/ui/icons.js` — Tree-shakable Lucide React icon exports
+
+All emoji icons replaced with Lucide React SVG icons for professional, consistent appearance.
