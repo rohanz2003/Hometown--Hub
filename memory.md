@@ -50,6 +50,7 @@ this file at the end of every work session.
 | 2026-09-07 | **Shared dropdown styling**              | Applied the `hh-select` theme to all reusable and raw role dropdowns, including light/dark option surfaces, consistent focus glow, hover borders, spacing, and typography. |
 | 2026-09-07 | **Moderation access and reports**        | Moderation navigation and route access now require platform-admin status or an approved moderator/admin membership. Ordinary users retain post reporting and can now report comments; platform admins see every report and community moderators see their communities. |
 | 2026-09-07 | **Auth form usability**                  | Login and registration now include accessible show/hide password controls. Registration uses the shared country/state dataset with dependent state selection, then city or village. |
+| 2026-09-07 | **Reference-style dropdowns**             | Replaced shared native Select popups with accessible floating listboxes: rounded surfaces, selected-row checkmarks, animated chevrons, scrollable menus, and theme-aware colors matching the provided reference. |
 
 ## 3. Currently Working On
 

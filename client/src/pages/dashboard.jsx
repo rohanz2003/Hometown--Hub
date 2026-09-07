@@ -18,10 +18,8 @@ import * as dashboardService from '../services/dashboardService';
 import { formatEventWindow, formatLocation, formatRelative } from '../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../utils/constants';
 import {
-  CommunityIcon as BuildingIcon,
   EventsIcon as CalendarIcon,
   NotificationBellIcon as BellIcon,
-  EditIcon,
   MembersIcon as UsersIcon,
 } from '../components/ui/icons';
 
@@ -50,28 +48,24 @@ export default function DashboardPage() {
         <StatCard
           label="Communities"
           value={stats.communities}
-          icon={BuildingIcon}
           to="/communities"
           accent="primary"
         />
         <StatCard
           label="Upcoming events"
           value={stats.upcomingEvents}
-          icon={CalendarIcon}
           to="/events"
           accent="accent"
         />
         <StatCard
           label="Unread notifications"
           value={stats.unreadNotifications}
-          icon={BellIcon}
           to="/notifications"
           accent="secondary"
         />
         <StatCard
           label="Your posts"
           value={stats.myPosts}
-          icon={EditIcon}
           hint={`${stats.likesReceived} ${stats.likesReceived === 1 ? 'like' : 'likes'} received`}
           accent="muted"
         />

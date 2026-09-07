@@ -34,6 +34,7 @@ import {
   CommentIcon as MessageSquareIcon,
   EventsIcon as CalendarIcon,
   ReportIcon as FlagIcon,
+  ChevronDownIcon,
 } from '../components/ui/icons';
 
 export default function AdminPage() {
@@ -405,15 +406,22 @@ function UserManagement() {
                     <label className="sr-only" htmlFor={`role-${row.id}`}>
                       Platform role for {row.name}
                     </label>
-                    <select
-                      id={`role-${row.id}`}
-                      value={row.role}
-                      onChange={(event) => setRole(row, event.target.value)}
-                      className="hh-input hh-select h-8 w-auto py-0 text-sm"
-                    >
-                      <option value="user">User</option>
-                      <option value="platform_admin">Platform admin</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id={`role-${row.id}`}
+                        value={row.role}
+                        onChange={(event) => setRole(row, event.target.value)}
+                        className="hh-input hh-select h-8 w-auto appearance-none py-0 pr-8 text-sm"
+                      >
+                        <option value="user">User</option>
+                        <option value="platform_admin">Platform admin</option>
+                      </select>
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-ink-subtle"
+                        strokeWidth={2}
+                      />
+                    </div>
 
                     <Button
                       size="sm"

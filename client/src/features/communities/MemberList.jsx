@@ -19,6 +19,7 @@ import usePaginatedList from '../../hooks/usePaginatedList';
 import * as communityService from '../../services/communityService';
 import { formatRelative } from '../../utils/format';
 import { COMMUNITY_ROLE_LABELS } from '../../utils/constants';
+import { ChevronDownIcon } from '../../components/ui/icons';
 
 const ROLE_OPTIONS = [
   { value: 'member', label: 'Member' },
@@ -148,18 +149,25 @@ export default function MemberList({ community, canModerate, canManageRoles }) {
                   <label className="sr-only" htmlFor={`role-${membership._id}`}>
                     Role for {member.name}
                   </label>
-                  <select
-                    id={`role-${membership._id}`}
-                    value={membership.role}
-                    onChange={(event) => changeRole(membership, event.target.value)}
-                    className="hh-input hh-select h-8 w-auto py-0 text-sm"
-                  >
-                    {ROLE_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      id={`role-${membership._id}`}
+                      value={membership.role}
+                      onChange={(event) => changeRole(membership, event.target.value)}
+                      className="hh-input hh-select h-8 w-auto appearance-none py-0 pr-8 text-sm"
+                    >
+                      {ROLE_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDownIcon
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-ink-subtle"
+                      strokeWidth={2}
+                    />
+                  </div>
 
                   <Button
                     size="sm"
