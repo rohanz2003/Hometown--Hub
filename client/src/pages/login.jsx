@@ -1,6 +1,7 @@
 /**
  * pages/login.jsx — Phase 1 sign-in screen.
  */
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -9,12 +10,14 @@ import { Input } from '../components/ui/Field';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { loginSchema } from '../utils/validators';
+import { HidePasswordIcon, ShowPasswordIcon } from '../components/ui/icons';
 
 export default function LoginPage() {
   const { login } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -58,10 +61,24 @@ export default function LoginPage() {
         <div>
           <Input
             label="Password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
             required
             error={errors.password?.message}
+            endAdornment={
+              <button
+                type="button"
+                onClick={() => setShowPassword((visible) => !visible)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                className="rounded-md p-1 text-ink-subtle hover:bg-surface-hover hover:text-ink"
+              >
+                {showPassword ? (
+                  <HidePasswordIcon className="h-4 w-4" strokeWidth={2} />
+                ) : (
+                  <ShowPasswordIcon className="h-4 w-4" strokeWidth={2} />
+                )}
+              </button>
+            }
             {...register('password')}
           />
           <div className="mt-1.5 text-right">

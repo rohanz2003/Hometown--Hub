@@ -11,6 +11,7 @@ import Avatar from '../../components/ui/Avatar';
 import Button from '../../components/ui/Button';
 import { Textarea } from '../../components/ui/Field';
 import ConfirmDialog from '../../components/ui/ConfirmDialog';
+import ReportDialog from './ReportDialog';
 import EmptyState, { ErrorState } from '../../components/ui/EmptyState';
 import { LoadingPanel } from '../../components/ui/Spinner';
 import { useToast } from '../../context/ToastContext';
@@ -29,6 +30,7 @@ export default function CommentSection({ post, canComment, canModerate, onCountC
 
   const [replyTo, setReplyTo] = useState(null);
   const [pendingDelete, setPendingDelete] = useState(null);
+  const [reporting, setReporting] = useState(null);
 
   // Stable identity so the grouping below only recomputes on a real change.
   const comments = useMemo(() => data?.items || [], [data]);
@@ -119,6 +121,7 @@ export default function CommentSection({ post, canComment, canModerate, onCountC
               canReply={canComment}
               onReply={() => setReplyTo(replyTo === thread._id ? null : thread._id)}
               onDelete={() => setPendingDelete(thread)}
+              onReport={() => setReporting(thread)}
               onPatch={patchComment}
             />
 
@@ -130,6 +133,7 @@ export default function CommentSection({ post, canComment, canModerate, onCountC
                       comment={reply}
                       canModerate={canModerate}
                       onDelete={() => setPendingDelete(reply)}
+                      onReport={() => setReporting(reply)}
                       onPatch={patchComment}
                     />
                   </li>
@@ -164,12 +168,19 @@ export default function CommentSection({ post, canComment, canModerate, onCountC
         message="It will be removed for everyone, along with any replies to it."
         confirmLabel="Delete comment"
       />
+
+      <ReportDialog
+        isOpen={Boolean(reporting)}
+        onClose={() => setReporting(null)}
+        targetType="comment"
+        targetId={reporting?._id}
+      />
     </section>
   );
 }
 
 /** A single comment with its like/reply/delete controls. */
-function Comment({ comment, canModerate, canReply, onReply, onDelete, onPatch }) {
+function Comment({ comment, canModerate, canReply, onReply, onDelete, onReport, onPatch }) {
   const toast = useToast();
   const author = comment.author || {};
 
@@ -236,6 +247,16 @@ function Comment({ comment, canModerate, canReply, onReply, onDelete, onPatch })
               className="font-medium text-ink-subtle hover:text-error"
             >
               Delete
+            </button>
+          )}
+
+          {!comment.isAuthor && (
+            <button
+              type="button"
+              onClick={onReport}
+              className="font-medium text-ink-subtle hover:text-error"
+            >
+              Report
             </button>
           )}
         </div>

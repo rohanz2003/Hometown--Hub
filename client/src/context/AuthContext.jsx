@@ -6,6 +6,7 @@
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import * as authService from '../services/authService';
+import * as communityService from '../services/communityService';
 import * as userService from '../services/userService';
 import { setSessionLostHandler } from '../services/api';
 import { useToast } from './ToastContext';
@@ -15,6 +16,7 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [status, setStatus] = useState('loading'); // loading | authenticated | anonymous
+  const [moderationAccess, setModerationAccess] = useState({ loading: true, allowed: false });
   const toast = useToast();
 
   /** Restores the session from the refresh cookie on first mount. */
@@ -31,13 +33,44 @@ export function AuthProvider({ children }) {
       })
       .catch(() => {
         // No usable cookie — this is the normal path for a first-time visitor.
-        if (!cancelled) setStatus('anonymous');
+        if (!cancelled) {
+          setModerationAccess({ loading: false, allowed: false });
+          setStatus('anonymous');
+        }
       });
 
     return () => {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (status !== 'authenticated' || !user) return undefined;
+    if (user.role === 'platform_admin') {
+      setModerationAccess({ loading: false, allowed: true });
+      return undefined;
+    }
+
+    let cancelled = false;
+    setModerationAccess({ loading: true, allowed: false });
+    communityService
+      .myCommunities()
+      .then((communities) => {
+        if (!cancelled) {
+          const allowed = communities.some((community) =>
+            ['moderator', 'admin'].includes(community.myRole),
+          );
+          setModerationAccess({ loading: false, allowed });
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setModerationAccess({ loading: false, allowed: false });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [status, user]);
 
   /** Lets the axios layer tell us the session could not be recovered. */
   useEffect(() => {
@@ -51,6 +84,7 @@ export function AuthProvider({ children }) {
 
   const adopt = useCallback((nextUser) => {
     setUser(nextUser);
+    setModerationAccess({ loading: true, allowed: false });
     setStatus('authenticated');
     return nextUser;
   }, []);
@@ -107,6 +141,8 @@ export function AuthProvider({ children }) {
       isLoading: status === 'loading',
       isAuthenticated: status === 'authenticated',
       isPlatformAdmin: user?.role === 'platform_admin',
+      canModerate: moderationAccess.allowed,
+      moderationAccessLoading: moderationAccess.loading,
       login,
       register,
       logout,
@@ -118,6 +154,7 @@ export function AuthProvider({ children }) {
     [
       user,
       status,
+      moderationAccess,
       login,
       register,
       logout,

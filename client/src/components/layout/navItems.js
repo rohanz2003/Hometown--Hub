@@ -28,7 +28,13 @@ export const NAV_ITEMS = [
     mobile: false,
     badge: 'unread',
   },
-  { to: '/moderation', label: 'Moderation', icon: ModerationIcon, mobile: false },
+  {
+    to: '/moderation',
+    label: 'Moderation',
+    icon: ModerationIcon,
+    mobile: false,
+    requiresModeration: true,
+  },
   { to: '/profile', label: 'Profile', icon: ProfileIcon, mobile: true },
   { to: '/settings', label: 'Settings', icon: SettingsIcon, mobile: false },
 ];

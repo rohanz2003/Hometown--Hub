@@ -20,6 +20,8 @@ export {
   Sun as LightThemeIcon,
   Moon as DarkThemeIcon,
   Search as SearchIcon,
+  Eye as ShowPasswordIcon,
+  EyeOff as HidePasswordIcon,
   Menu as MenuIcon,
   X as CloseIcon,
 

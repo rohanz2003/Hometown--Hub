@@ -11,10 +11,12 @@ import { NAV_ITEMS, ADMIN_NAV_ITEMS } from './navItems';
 import { CollapseIcon, ExpandIcon } from './navIcons';
 
 export default function Sidebar({ unreadCount = 0 }) {
-  const { isPlatformAdmin } = useAuth();
+  const { isPlatformAdmin, canModerate, moderationAccessLoading } = useAuth();
   const { sidebarCollapsed, toggleSidebar } = useTheme();
 
-  const items = isPlatformAdmin ? [...NAV_ITEMS, ...ADMIN_NAV_ITEMS] : NAV_ITEMS;
+  const items = (isPlatformAdmin ? [...NAV_ITEMS, ...ADMIN_NAV_ITEMS] : NAV_ITEMS).filter(
+    (item) => !item.requiresModeration || (!moderationAccessLoading && canModerate),
+  );
 
   return (
     <aside

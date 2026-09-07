@@ -5,10 +5,16 @@
  * reach, with 44px-tall touch targets.
  */
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { NAV_ITEMS } from './navItems';
 
 export default function MobileNav() {
-  const items = NAV_ITEMS.filter((item) => item.mobile);
+  const { canModerate, moderationAccessLoading } = useAuth();
+  const items = NAV_ITEMS.filter(
+    (item) =>
+      item.mobile &&
+      (!item.requiresModeration || (!moderationAccessLoading && canModerate)),
+  );
 
   return (
     <nav

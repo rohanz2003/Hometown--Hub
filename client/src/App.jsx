@@ -8,7 +8,12 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import AuthLayout from './components/layout/AuthLayout';
-import { PlatformAdminRoute, ProtectedRoute, PublicOnlyRoute } from './components/RouteGuards';
+import {
+  ModeratorRoute,
+  PlatformAdminRoute,
+  ProtectedRoute,
+  PublicOnlyRoute,
+} from './components/RouteGuards';
 import ToastViewport from './components/ui/ToastViewport';
 import { LoadingPanel } from './components/ui/Spinner';
 import { AuthProvider } from './context/AuthContext';
@@ -70,7 +75,9 @@ export default function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/profile/:userId" element={<ProfilePage />} />
                   <Route path="/settings" element={<SettingsPage />} />
-                  <Route path="/moderation" element={<ModerationPage />} />
+                  <Route element={<ModeratorRoute />}>
+                    <Route path="/moderation" element={<ModerationPage />} />
+                  </Route>
 
                   <Route element={<PlatformAdminRoute />}>
                     <Route path="/admin" element={<AdminPage />} />

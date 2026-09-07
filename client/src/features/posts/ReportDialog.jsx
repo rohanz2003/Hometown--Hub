@@ -37,7 +37,7 @@ export default function ReportDialog({ isOpen, onClose, targetType, targetId }) 
       isOpen={isOpen}
       onClose={onClose}
       title={`Report this ${targetType}`}
-      description="Only the moderators of this community will see your report."
+      description="Community moderators and platform admins will review your report."
       size="sm"
       footer={
         <>

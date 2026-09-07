@@ -48,6 +48,8 @@ this file at the end of every work session.
 | 2026-09-06 | **Community submission notifications**    | Added unread in-app notifications for active platform admins whenever a user creates a pending community. Notifications use the `community_submitted` type and link to `/admin`; the notification service remains the single write path. |
 | 2026-09-07 | **Community location selectors**         | Community creation/edit forms now use the `country-state-city` dataset for country and country-specific state/region dropdowns. The shared Select control has a themed chevron, stronger hover/focus treatment, and dark-mode support. |
 | 2026-09-07 | **Shared dropdown styling**              | Applied the `hh-select` theme to all reusable and raw role dropdowns, including light/dark option surfaces, consistent focus glow, hover borders, spacing, and typography. |
+| 2026-09-07 | **Moderation access and reports**        | Moderation navigation and route access now require platform-admin status or an approved moderator/admin membership. Ordinary users retain post reporting and can now report comments; platform admins see every report and community moderators see their communities. |
+| 2026-09-07 | **Auth form usability**                  | Login and registration now include accessible show/hide password controls. Registration uses the shared country/state dataset with dependent state selection, then city or village. |
 
 ## 3. Currently Working On
 

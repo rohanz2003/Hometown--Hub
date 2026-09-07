@@ -41,7 +41,17 @@ const describedBy = (id, { error, hint }) =>
   undefined;
 
 export const Input = forwardRef(function Input(
-  { label, error, hint, required, className = '', wrapperClassName = '', id: providedId, ...props },
+  {
+    label,
+    error,
+    hint,
+    required,
+    className = '',
+    wrapperClassName = '',
+    id: providedId,
+    endAdornment,
+    ...props
+  },
   ref,
 ) {
   const autoId = useId();
@@ -55,15 +65,20 @@ export const Input = forwardRef(function Input(
       required={required}
       className={wrapperClassName}
     >
-      <input
-        ref={ref}
-        id={id}
-        required={required}
-        aria-invalid={error ? 'true' : undefined}
-        aria-describedby={describedBy(id, { error, hint })}
-        className={`hh-input ${error ? 'border-error focus:border-error focus:ring-error/30' : ''} ${className}`}
-        {...props}
-      />
+      <div className={endAdornment ? 'relative' : undefined}>
+        <input
+          ref={ref}
+          id={id}
+          required={required}
+          aria-invalid={error ? 'true' : undefined}
+          aria-describedby={describedBy(id, { error, hint })}
+          className={`hh-input ${endAdornment ? 'pr-11' : ''} ${error ? 'border-error focus:border-error focus:ring-error/30' : ''} ${className}`}
+          {...props}
+        />
+        {endAdornment && (
+          <span className="absolute inset-y-0 right-2 flex items-center">{endAdornment}</span>
+        )}
+      </div>
     </FieldShell>
   );
 });

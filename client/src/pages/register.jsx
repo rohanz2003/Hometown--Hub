@@ -4,23 +4,30 @@
  * Hometown is required at registration: it is what connects a new account to the
  * right communities.
  */
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
-import { Input } from '../components/ui/Field';
+import { Input, Select } from '../components/ui/Field';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { registerSchema } from '../utils/validators';
+import { COUNTRY_OPTIONS, getCountryCode, getCountryName, getStateOptions } from '../utils/locations';
+import { HidePasswordIcon, ShowPasswordIcon } from '../components/ui/icons';
 
 export default function RegisterPage() {
   const { register: createAccount } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     setError,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -36,6 +43,19 @@ export default function RegisterPage() {
       country: '',
     },
   });
+
+  const country = watch('country');
+  const countryCode = getCountryCode(country);
+  const stateOptions = getStateOptions(countryCode);
+  const countryRegistration = register('country');
+
+  const handleCountryChange = (event) => {
+    setValue('country', getCountryName(event.target.value), {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+    setValue('state', '', { shouldDirty: true, shouldValidate: true });
+  };
 
   const onSubmit = async (values) => {
     try {
@@ -94,6 +114,25 @@ export default function RegisterPage() {
 
         <fieldset className="space-y-3">
           <legend className="hh-label">Your hometown</legend>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Select
+              label="Country"
+              placeholder="Select a country"
+              options={COUNTRY_OPTIONS}
+              value={countryCode}
+              {...countryRegistration}
+              onChange={handleCountryChange}
+              error={errors.country?.message}
+            />
+            <Select
+              label="State or region"
+              placeholder={countryCode ? 'Select a state or region' : 'Choose a country first'}
+              options={stateOptions}
+              disabled={!countryCode || stateOptions.length === 0}
+              error={errors.state?.message}
+              {...register('state')}
+            />
+          </div>
           <Input
             label="City or village"
             placeholder="Kollengode"
@@ -101,28 +140,52 @@ export default function RegisterPage() {
             error={errors.city?.message}
             {...register('city')}
           />
-          <div className="grid gap-3 sm:grid-cols-2">
-            <Input label="State or region" error={errors.state?.message} {...register('state')} />
-            <Input label="Country" error={errors.country?.message} {...register('country')} />
-          </div>
         </fieldset>
 
         <Input
           label="Password"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           autoComplete="new-password"
           hint="At least 8 characters, with a letter and a number."
           required
           error={errors.password?.message}
+          endAdornment={
+            <button
+              type="button"
+              onClick={() => setShowPassword((visible) => !visible)}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
+              className="rounded-md p-1 text-ink-subtle hover:bg-surface-hover hover:text-ink"
+            >
+              {showPassword ? (
+                <HidePasswordIcon className="h-4 w-4" strokeWidth={2} />
+              ) : (
+                <ShowPasswordIcon className="h-4 w-4" strokeWidth={2} />
+              )}
+            </button>
+          }
           {...register('password')}
         />
 
         <Input
           label="Confirm password"
-          type="password"
+          type={showConfirmPassword ? 'text' : 'password'}
           autoComplete="new-password"
           required
           error={errors.confirmPassword?.message}
+          endAdornment={
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword((visible) => !visible)}
+              aria-label={showConfirmPassword ? 'Hide password confirmation' : 'Show password confirmation'}
+              className="rounded-md p-1 text-ink-subtle hover:bg-surface-hover hover:text-ink"
+            >
+              {showConfirmPassword ? (
+                <HidePasswordIcon className="h-4 w-4" strokeWidth={2} />
+              ) : (
+                <ShowPasswordIcon className="h-4 w-4" strokeWidth={2} />
+              )}
+            </button>
+          }
           {...register('confirmPassword')}
         />
 

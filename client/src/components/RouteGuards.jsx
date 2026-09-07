@@ -32,6 +32,19 @@ export function PlatformAdminRoute() {
   return <Outlet />;
 }
 
+/** Requires a community moderator/admin role or the platform-admin role. */
+export function ModeratorRoute() {
+  const { isAuthenticated, canModerate, moderationAccessLoading, isLoading } = useAuth();
+
+  if (isLoading || moderationAccessLoading) {
+    return <LoadingPanel label="Checking your moderation permissions" className="min-h-screen" />;
+  }
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!canModerate) return <Navigate to="/dashboard" replace />;
+
+  return <Outlet />;
+}
+
 /** Sends an already-signed-in visitor away from the login/register screens. */
 export function PublicOnlyRoute() {
   const { isAuthenticated, isLoading } = useAuth();

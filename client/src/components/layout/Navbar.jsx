@@ -17,7 +17,7 @@ import {
 } from './navIcons';
 
 export default function Navbar({ unreadCount = 0 }) {
-  const { user, logout, isPlatformAdmin } = useAuth();
+  const { user, logout, isPlatformAdmin, canModerate, moderationAccessLoading } = useAuth();
   const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
@@ -47,7 +47,9 @@ export default function Navbar({ unreadCount = 0 }) {
     if (term) navigate(`/communities?q=${encodeURIComponent(term)}`);
   };
 
-  const menuItems = isPlatformAdmin ? [...NAV_ITEMS, ...ADMIN_NAV_ITEMS] : NAV_ITEMS;
+  const menuItems = (isPlatformAdmin ? [...NAV_ITEMS, ...ADMIN_NAV_ITEMS] : NAV_ITEMS).filter(
+    (item) => !item.requiresModeration || (!moderationAccessLoading && canModerate),
+  );
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/80">
