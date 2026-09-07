@@ -152,7 +152,7 @@ export default function MemberList({ community, canModerate, canManageRoles }) {
                     id={`role-${membership._id}`}
                     value={membership.role}
                     onChange={(event) => changeRole(membership, event.target.value)}
-                    className="hh-input h-8 w-auto py-0 text-sm"
+                    className="hh-input hh-select h-8 w-auto py-0 text-sm"
                   >
                     {ROLE_OPTIONS.map((option) => (
                       <option key={option.value} value={option.value}>

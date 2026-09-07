@@ -6,6 +6,7 @@
  * than only shown in red (design.md § 1 — accessibility).
  */
 import { forwardRef, useId } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 function FieldShell({ id, label, error, hint, required, children, className = '' }) {
   return (
@@ -133,23 +134,30 @@ export const Select = forwardRef(function Select(
       required={required}
       className={wrapperClassName}
     >
-      <select
-        ref={ref}
-        id={id}
-        required={required}
-        aria-invalid={error ? 'true' : undefined}
-        aria-describedby={describedBy(id, { error, hint })}
-        className={`hh-input pr-8 ${error ? 'border-error' : ''} ${className}`}
-        {...props}
-      >
-        {placeholder && <option value="">{placeholder}</option>}
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-        {children}
-      </select>
+      <div className="relative">
+        <select
+          ref={ref}
+          id={id}
+          required={required}
+          aria-invalid={error ? 'true' : undefined}
+          aria-describedby={describedBy(id, { error, hint })}
+          className={`hh-input hh-select appearance-none pr-10 transition-shadow hover:border-line-strong focus:shadow-[0_0_0_4px_rgb(var(--color-primary-glow)/0.12)] ${error ? 'border-error' : ''} ${className}`}
+          {...props}
+        >
+          {placeholder && <option value="">{placeholder}</option>}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+          {children}
+        </select>
+        <ChevronDown
+          aria-hidden="true"
+          className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-subtle transition-colors"
+          strokeWidth={2}
+        />
+      </div>
     </FieldShell>
   );
 });

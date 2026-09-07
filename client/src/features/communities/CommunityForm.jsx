@@ -8,6 +8,7 @@ import { Checkbox, Input, Select, Textarea } from '../../components/ui/Field';
 import { useToast } from '../../context/ToastContext';
 import * as communityService from '../../services/communityService';
 import { communitySchema, parseTags } from '../../utils/validators';
+import { COUNTRY_OPTIONS, getCountryCode, getCountryName, getStateOptions } from '../../utils/locations';
 
 const VISIBILITY_OPTIONS = [
   { value: 'public', label: 'Public — anyone can read and join' },
@@ -22,6 +23,7 @@ export default function CommunityForm({ community = null, onSaved, onCancel }) {
     register,
     handleSubmit,
     watch,
+    setValue,
     setError,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -39,6 +41,16 @@ export default function CommunityForm({ community = null, onSaved, onCancel }) {
   });
 
   const visibility = watch('visibility');
+  const country = watch('country');
+  const countryCode = getCountryCode(country);
+  const stateOptions = getStateOptions(countryCode);
+  const countryRegistration = register('country');
+
+  const handleCountryChange = (event) => {
+    const nextCountry = event.target.value;
+    setValue('country', getCountryName(nextCountry), { shouldDirty: true, shouldValidate: true });
+    setValue('state', '', { shouldDirty: true, shouldValidate: true });
+  };
 
   const onSubmit = async (values) => {
     const payload = {
@@ -91,14 +103,29 @@ export default function CommunityForm({ community = null, onSaved, onCancel }) {
 
       <fieldset className="grid gap-3 sm:grid-cols-3">
         <legend className="hh-label">Where is it?</legend>
+        <Select
+          label="Country"
+          placeholder="Select a country"
+          options={COUNTRY_OPTIONS}
+          value={countryCode}
+          {...countryRegistration}
+          onChange={handleCountryChange}
+          error={errors.country?.message}
+        />
+        <Select
+          label="State or region"
+          placeholder={countryCode ? 'Select a state or region' : 'Choose a country first'}
+          options={stateOptions}
+          disabled={!countryCode || stateOptions.length === 0}
+          error={errors.state?.message}
+          {...register('state')}
+        />
         <Input
           label="City or village"
           required
           error={errors.city?.message}
           {...register('city')}
         />
-        <Input label="State or region" error={errors.state?.message} {...register('state')} />
-        <Input label="Country" error={errors.country?.message} {...register('country')} />
       </fieldset>
 
       <Select

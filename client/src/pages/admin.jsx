@@ -409,7 +409,7 @@ function UserManagement() {
                       id={`role-${row.id}`}
                       value={row.role}
                       onChange={(event) => setRole(row, event.target.value)}
-                      className="hh-input h-8 w-auto py-0 text-sm"
+                      className="hh-input hh-select h-8 w-auto py-0 text-sm"
                     >
                       <option value="user">User</option>
                       <option value="platform_admin">Platform admin</option>

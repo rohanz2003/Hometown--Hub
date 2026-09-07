@@ -158,6 +158,26 @@
     @apply mb-1.5 block text-sm font-medium text-[rgb(var(--color-text-muted))];
   }
 
+  /* Consistent native dropdown surface; option menus follow the active theme where supported. */
+  .hh-select {
+    color-scheme: light;
+  }
+
+  .dark .hh-select {
+    color-scheme: dark;
+  }
+
+  .hh-select option {
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-text));
+  }
+
+  .hh-select option:checked,
+  .hh-select option:hover {
+    background-color: rgb(var(--color-primary-soft));
+    color: rgb(var(--color-text));
+  }
+
   /* Skip link for keyboard users */
   .hh-skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50

@@ -46,6 +46,8 @@ this file at the end of every work session.
 | 2026-09-04 | Added `canInteract` to post payloads      | The client was inferring membership from the presence of other fields. The API now says explicitly whether the viewer may like/comment/share                                                                                                                                                                                                                                           |
 | 2026-09-06 | **Professional redesign**                 | Replaced all emoji icons with Lucide React SVG icons. Updated color palette to professional slate-based neutral tones with consistent primary/secondary/accent glow colors that work in both light/dark modes. Fixed dark mode visibility issues across landing, auth, and dashboard pages. Navbar layout reordered: brand → search → theme → notifications → profile (right-aligned). |
 | 2026-09-06 | **Community submission notifications**    | Added unread in-app notifications for active platform admins whenever a user creates a pending community. Notifications use the `community_submitted` type and link to `/admin`; the notification service remains the single write path. |
+| 2026-09-07 | **Community location selectors**         | Community creation/edit forms now use the `country-state-city` dataset for country and country-specific state/region dropdowns. The shared Select control has a themed chevron, stronger hover/focus treatment, and dark-mode support. |
+| 2026-09-07 | **Shared dropdown styling**              | Applied the `hh-select` theme to all reusable and raw role dropdowns, including light/dark option surfaces, consistent focus glow, hover borders, spacing, and typography. |
 
 ## 3. Currently Working On
 
