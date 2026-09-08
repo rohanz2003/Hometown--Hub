@@ -27,6 +27,7 @@ function ActionButton({
   onClick,
   disabled,
   title,
+  burst = false,
   as: Component = 'button',
   ...props
 }) {
@@ -40,7 +41,11 @@ function ActionButton({
         isActive ? 'text-primary' : 'text-ink-muted',
       ].join(' ')}
     >
-      <Icon className="h-5 w-5 flex-shrink-0" strokeWidth={2} aria-hidden="true" />
+      <span
+        className={`relative grid h-5 w-5 shrink-0 place-items-center ${burst ? 'hh-like-burst' : ''}`}
+      >
+        <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+      </span>
       <span className="tabular-nums">{formatCount(count)}</span>
       <span className="sr-only">{label}</span>
     </Component>
@@ -58,7 +63,9 @@ export default function PostActions({
   onReport,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [likeBurst, setLikeBurst] = useState(false);
   const menuRef = useRef(null);
+  const burstTimerRef = useRef(null);
 
   useEffect(() => {
     if (!menuOpen) return undefined;
@@ -75,6 +82,21 @@ export default function PostActions({
     };
   }, [menuOpen]);
 
+  useEffect(
+    () => () => {
+      if (burstTimerRef.current) clearTimeout(burstTimerRef.current);
+    },
+    [],
+  );
+
+  const handleLike = () => {
+    if (!post.isLiked) {
+      setLikeBurst(true);
+      burstTimerRef.current = setTimeout(() => setLikeBurst(false), 650);
+    }
+    onLike();
+  };
+
   const canEdit = post.isAuthor;
   const canDelete = post.isAuthor || post.canModerate;
 
@@ -85,7 +107,8 @@ export default function PostActions({
         label={post.isLiked ? 'Unlike this post' : 'Like this post'}
         count={post.likeCount}
         isActive={post.isLiked}
-        onClick={onLike}
+        onClick={handleLike}
+        burst={likeBurst}
         disabled={post.canInteract === false}
         title={post.canInteract === false ? 'Join this community to like posts' : undefined}
       />
