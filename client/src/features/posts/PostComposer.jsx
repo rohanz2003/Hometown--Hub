@@ -210,7 +210,7 @@ export default function PostComposer({
                 <img
                   src={imagePreview}
                   alt="Preview of what you selected"
-                  className="max-h-48 w-full rounded-lg border border-line object-cover"
+                  className="aspect-video max-h-48 w-full rounded-lg border border-line bg-surface-muted object-contain"
                 />
                 <button
                   type="button"

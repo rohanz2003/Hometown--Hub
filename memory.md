@@ -52,6 +52,7 @@ this file at the end of every work session.
 | 2026-09-07 | **Auth form usability**                  | Login and registration now include accessible show/hide password controls. Registration uses the shared country/state dataset with dependent state selection, then city or village. |
 | 2026-09-07 | **Reference-style dropdowns**             | Replaced shared native Select popups with accessible floating listboxes: rounded surfaces, selected-row checkmarks, animated chevrons, scrollable menus, and theme-aware colors matching the provided reference. |
 | 2026-09-08 | **Like interaction animation**            | Added a reduced-motion-aware heart pop, colorful radial spark burst, and expanding ring when a post transitions from unliked to liked. |
+| 2026-09-08 | **Full post image previews**               | Feed cards and post composer previews now use stable 16:9 frames with `object-contain` and a muted background, keeping the entire uploaded image visible without cropping. |
 
 ## 3. Currently Working On
 

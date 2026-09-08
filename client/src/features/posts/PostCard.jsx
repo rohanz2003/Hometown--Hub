@@ -177,7 +177,7 @@ export default function PostCard({
                 src={mediaUrl(post.imageUrl)}
                 alt={post.imageAlt || `Image shared with the post "${post.title || 'untitled'}"`}
                 loading="lazy"
-                className="max-h-96 w-full rounded-lg border border-line object-cover"
+                className="aspect-video max-h-96 w-full rounded-lg border border-line bg-surface-muted object-contain"
               />
             </button>
 
